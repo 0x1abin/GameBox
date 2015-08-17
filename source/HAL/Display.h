@@ -1,12 +1,12 @@
 #ifndef _DISPLAY_H_
 #define _DISPLAY_H_
 
-#include "typedef.h"
+#include "common.h"
 
-extern uint8 buffer[16];
+extern uint8 xbuff[16];
 
-extern void Display_Init();
-extern void Display_Now();
+extern void Display_init();
+extern void Display_now();
 
 #endif
 

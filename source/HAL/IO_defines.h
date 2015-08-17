@@ -1,53 +1,33 @@
 #ifndef _IO_DEFINES_H_
 #define _IO_DEFINES_H_
 
-/*
-                    ^
-    8 7 6 5 4 3 2 1 Y
- 16 x x x x x x x x |
- 15 x x x x x x x x |
- 14 x x x x x x x x |
- 13 x x x x x x x x |
- 12 x x x x x x x x |
- 11 x x x x x x x x |
- 10 x x x x x x x x |
- 09 x x x x x x x x |
- 08 x x x x x x x x |
- 07 x x x x x x x x |
- 06 x x x x x x x x |
- 05 x x x x x x x x |
- 04 x x x x x x x x |
- 03 x x x x x x x x |
- 02 x x x x x x x x |
- 01 x x x x x x x x |
-<X------------------
-*/
+#include "common.h"
 
 /*====================================
 
- COL  1 2 3 4 5 6 7 8 
-	 -----------------
- A1 | x x x x x x x x |
- A2 | x x x x x x x x |
- A3 | x x x x x x x x |
- A4 | x x x x x x x x |
- A5 | x x x x x x x x |
- A6 | x x x x x x x x |
- A7 | x x x x x x x x |
- A8 | x x x x x x x x |
- ROW -----------------
- 
- COL  1 2 3 4 5 6 7 8 
-     -----------------	 
- B1 | x x x x x x x x |
- B2 | x x x x x x x x |
- B3 | x x x x x x x x |
- B4 | x x x x x x x x |
- B5 | x x x x x x x x |
- B6 | x x x x x x x x |
- B7 | x x x x x x x x |
- B8 | x x x x x x x x |
- ROW -----------------
+		 COL  1 2 3 4 5 6 7 8 
+			 -----------------
+		 A1 | x x x x x x x x |
+		 A2 | x x x x x x x x |
+		 A3 | x x x x x x x x |
+		 A4 | x x x x x x x x |
+		 A5 | x x x x x x x x |
+		 A6 | x x x x x x x x |
+		 A7 | x x x x x x x x |
+		 A8 | x x x x x x x x |
+		 ROW -----------------
+		 
+		 COL  1 2 3 4 5 6 7 8 
+			 -----------------	 
+		 B1 | x x x x x x x x |
+		 B2 | x x x x x x x x |
+		 B3 | x x x x x x x x |
+		 B4 | x x x x x x x x |
+		 B5 | x x x x x x x x |
+		 B6 | x x x x x x x x |
+		 B7 | x x x x x x x x |
+		 B8 | x x x x x x x x |
+		 ROW -----------------
  
 =====================================*/
 
@@ -86,6 +66,18 @@ sbit LED_B_PIN13 = P2^4;
 sbit LED_B_PIN14 = P0^7;
 sbit LED_B_PIN15 = P4^1;
 sbit LED_B_PIN16 = P4^6;
+
+//PxM0.n,PxM1.n 	=00--->Standard,	10--->push-pull
+//					=01--->pure input,	11--->open drain
+//PxM0.n,PxM1.n 	=00--->Standard,	10--->push-pull
+//					=01--->pure input,	11--->open drain
+
+//为了方便，所以LED口都并口设置为推挽模式
+#define SET_OUT_PUSH_LED_P0		{P0M0 = 0XFF; P0M1 = 0X00;}
+#define SET_OUT_PUSH_LED_P1		{P1M0 = 0XFF; P1M1 = 0X00;}
+#define SET_OUT_PUSH_LED_P2		{P2M0 = 0XFF; P2M1 = 0X00;}
+#define SET_OUT_PUSH_LED_P4		{P4M0 = 0XFF; P4M1 = 0X00;}
+
 /*==============================================*/
 #define LED_COL_1		LED_A_PIN16
 #define LED_COL_2		LED_A_PIN15
@@ -174,24 +166,30 @@ sbit LED_B_PIN16 = P4^6;
 #define LED_ROW_B8_OFF		LED_ROW_B8 = ROW_OFF
 
 
+
 /*====================== Keypad PIN Defines ==========================*/
 sbit KEY_UP	   = P3^2;	
 sbit KEY_DOWN  = P3^6;
 sbit KEY_LEFT  = P3^0;
 sbit KEY_RIGHT = P3^3;
-sbit KEY_OK    = P3^7;
+sbit KEY_A     = P3^7;
 
-#define SET_IO_IN_KEY_UP
-#define SET_IO_IN_KEY_DOWN
-#define SET_IO_IN_KEY_LEFT
-#define SET_IO_IN_KEY_RIGHT
-#define SET_IO_IN_KEY_OK
+//PxM0.n,PxM1.n 	=00--->Standard,	10--->push-pull
+//					=01--->pure input,	11--->open drain
+//PxM0.n,PxM1.n 	=00--->Standard,	10--->push-pull
+//					=01--->pure input,	11--->open drain
+#define SET_IN_KEY_UP		{P3M0 &= ~0xcd; P3M1 |= 0xcd;}
+#define SET_IN_KEY_DOWN
+#define SET_IN_KEY_LEFT
+#define SET_IN_KEY_RIGHT
+#define SET_IN_KEY_A	
+
 
 #define GET_KEYPAD_UP		KEY_UP
 #define GET_KEYPAD_DOWN		KEY_DOWN
 #define GET_KEYPAD_LEFT		KEY_LEFT
 #define GET_KEYPAD_RIGHT	KEY_RIGHT
-#define GET_KEYPAD_OK		KEY_OK
+#define GET_KEYPAD_A		KEY_A
 
 
 #endif

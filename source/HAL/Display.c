@@ -1,15 +1,48 @@
-#include "config.h"
-#include "IO_defines.h"
+//#include "config.h"
+#include "common.h"
 
-uint8 buffer[16];
+/*
+                    ^
+    8 7 6 5 4 3 2 1 Y
+ 16 x x x x x x x x |
+ 15 x x x x x x x x |
+ 14 x x x x x x x x |
+ 13 x x x x x x x x |
+ 12 x x x x x x x x |
+ 11 x x x x x x x x |
+ 10 x x x x x x x x |
+ 09 x x x x x x x x |
+ 08 x x x x x x x x |
+ 07 x x x x x x x x |
+ 06 x x x x x x x x |
+ 05 x x x x x x x x |
+ 04 x x x x x x x x |
+ 03 x x x x x x x x |
+ 02 x x x x x x x x |
+ 01 x x x x x x x x |
+<X------------------
+*/
+
+
+uint8 xbuff[16];
 
 void Tns(uint8 n)//¶ÌÔÝÑÓÊ±
 {
 	while(n--);
 }
 
-void Display_Init()
+void Display_init()
 {
+	uint8 i;
+	for(i=0; i<16; i++)
+	{
+		xbuff[i] = 0;
+	}
+	
+	SET_OUT_PUSH_LED_P0;
+	SET_OUT_PUSH_LED_P1;
+	SET_OUT_PUSH_LED_P2;
+	SET_OUT_PUSH_LED_P4;
 	
 }
 
@@ -82,32 +115,16 @@ void Select_Row(uint8 row)
 			LED_ROW_A1_ON;
 			break;	
 		default:
-			LED_ROW_A1_OFF;
-			LED_ROW_A2_OFF;
-			LED_ROW_A3_OFF;
-			LED_ROW_A4_OFF;
-			LED_ROW_A5_OFF;
-			LED_ROW_A6_OFF;
-			LED_ROW_A7_OFF;
-			LED_ROW_A8_OFF;
-			LED_ROW_B1_OFF;
-			LED_ROW_B2_OFF;
-			LED_ROW_B3_OFF;
-			LED_ROW_B4_OFF;
-			LED_ROW_B5_OFF;
-			LED_ROW_B6_OFF;
-			LED_ROW_B7_OFF;
-			LED_ROW_B8_OFF;
 			break;		
 	}
 }
 
-void Display_Now()
+void Display_now() 
 {
 	uint8 x,y,tmp;
 	for(y=0; y<16; y++)
 	{
-		tmp = buffer[y];
+		tmp = xbuff[y];
 		Select_Row(y);
 		for(x=1;x<9;x++)
 		{
@@ -176,8 +193,11 @@ void Display_Now()
 					else
 						LED_COL_8_OFF;
 					break;
+					
+				default:
+					break;	
 			}
-			// Tns(duty);
+			Tns(20);
 			tmp >>= 1;
 		}
 		LED_COL_8_OFF;
@@ -186,7 +206,7 @@ void Display_Now()
 }
 
 
-
+/*
 
 void DisPoint(uint8 x,uint8 y)
 {
@@ -259,3 +279,4 @@ void SMG_Display(uint16 goal,uint8 duty)
 	
 	SMG_S3 = 1;
 }
+*/

@@ -1,0 +1,240 @@
+C51 COMPILER V9.52.0.0   MAIN                                                              08/16/2015 16:49:23 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\..\Output\main.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ..\..\source\main.c BROWSE INCDIR(..\..\source;..\..\source\HAL) DEBUG OBJE
+                    -CTEXTEND PRINT(.\main.lst) OBJECT(..\..\Output\main.obj)
+
+line level    source
+
+   1          #include "common.h"
+   2          // #include "config.h"
+   3          
+   4          #define RESET_SYSTEM            {IAP_CONTR=0x60;}
+   5          #define IRQ_ENABLE                      EA = 1
+   6          #define IRQ_DISABLE                     EA = 0
+   7          
+   8          #define STA_WELCOME_SCREEN              1
+   9          #define STA_SELECTION_MENU              2
+  10          #define STA_INITIALIZE_GAME             3
+  11          #define STA_PLAY_GAME                   4
+  12          #define STA_GAMEOVER                    5
+  13          
+  14          
+  15          uint8 imbuff[16] = 0;
+  16          uint8 which_game = 0;
+  17          uint8 mainstate = STA_WELCOME_SCREEN;
+  18          BOOL gameover_flg = 0;
+  19          
+  20          void buffcpy(uint8 *dest, uint8 pt, const uint8 *src, uint8 length)
+  21          {
+  22   1              uint8 i,p;
+  23   1              for(i=0,p=pt; p < ((pt+length)>16 ? 16:(pt+length)); i++,p++)
+  24   1              {
+  25   2                      dest[p] = src[i];
+  26   2              }
+  27   1      }
+  28          
+  29          void buffcpy_16byte(uint8 *dest, const uint8 *src)
+  30          {
+  31   1              uint8 i;
+  32   1              for(i=0; i<16; i++)
+  33   1              {
+  34   2                      dest[i] = src[i];
+  35   2              }
+  36   1      }
+  37          
+  38          void clear(uint8 *buf)
+  39          {
+  40   1              uint8 i;
+  41   1              for(i=0; i<16; i++)
+  42   1              {
+  43   2                      buf[i] = 0;
+  44   2              }
+  45   1      }
+  46          
+  47          void refresh()
+  48          {
+  49   1              uint8 i;
+  50   1              for(i=0; i<16; i++)
+  51   1              {
+  52   2                      xbuff[i] = imbuff[i];
+  53   2              }
+  54   1      }
+C51 COMPILER V9.52.0.0   MAIN                                                              08/16/2015 16:49:23 PAGE 2   
+
+  55          
+  56          
+  57          void Timer0Init(void)   //1毫秒@24.000MHz
+  58          {
+  59   1              AUXR |= 0x80;           //定时器时钟1T模式
+  60   1              TMOD &= 0xF0;           //设置定时器模式
+  61   1              TL0 = 0x40;                     //设置定时初值
+  62   1              TH0 = 0xA2;                     //设置定时初值
+  63   1              TF0 = 0;                        //清除TF0标志
+  64   1              TR0 = 1;                        //定时器0开始计时
+  65   1              
+  66   1              ET0 = 1;                //使能定时器0中断
+  67   1              // EA = 1;
+  68   1      }
+  69          
+  70          void Test_mode()
+  71          {
+  72   1              code uint8 S_Logo[8]={0x00,0x19,0x2A,0xC8,0x8B,0xC8,0x2A,0x19};
+  73   1              code uint8 S_ON[8]={0x00,0x00,0x42,0x62,0x52,0x4A,0x46,0x42};/*ON*/
+  74   1              
+  75   1              uint8 i;
+  76   1              
+  77   1              clear(imbuff);
+  78   1              // for(i=0; i<8; i++)
+  79   1              // {
+  80   1                      // imbuff[i] = S_ON[i];
+  81   1              // }
+  82   1              
+  83   1              // for(i=0; i<8; i++)
+  84   1              // {
+  85   1                      // imbuff[i+7] = S_Logo[i];
+  86   1              // }
+  87   1              
+  88   1              buffcpy(imbuff, 8, S_Logo, sizeof(S_Logo));
+  89   1              
+  90   1              buffcpy(imbuff, 0, S_ON, sizeof(S_ON));
+  91   1              
+  92   1              
+  93   1      } 
+*** WARNING C280 IN LINE 75 OF ..\..\source\main.c: 'i': unreferenced local variable
+  94          
+  95          void main()
+  96          {
+  97   1              IRQ_DISABLE;
+  98   1              
+  99   1              Timer0Init();
+ 100   1              Display_init();
+ 101   1              keypad_init();
+ 102   1              
+ 103   1              Test_mode();
+ 104   1              IRQ_ENABLE;
+ 105   1              
+ 106   1              while(1)
+ 107   1              {
+ 108   2                      switch (mainstate)
+ 109   2                      {
+ 110   3                              case STA_WELCOME_SCREEN:
+ 111   3                              {
+ 112   4                                      
+ 113   4                                      mainstate = STA_SELECTION_MENU;
+ 114   4                                      break;          
+ 115   4                              }
+C51 COMPILER V9.52.0.0   MAIN                                                              08/16/2015 16:49:23 PAGE 3   
+
+ 116   3                              
+ 117   3                              case STA_SELECTION_MENU:
+ 118   3                              {
+ 119   4                                      if(which_game != 0)
+ 120   4                                      {
+ 121   5                                              mainstate = STA_INITIALIZE_GAME;
+ 122   5                                      }       
+ 123   4                                      break;
+ 124   4                              }
+ 125   3                              
+ 126   3                              case STA_INITIALIZE_GAME:
+ 127   3                              {
+ 128   4                                      switch (which_game)
+ 129   4                                      {
+ 130   5                                              case 1:
+ 131   5                                              
+ 132   5                                                      break;
+ 133   5                                                      
+ 134   5                                              case 2:
+ 135   5                                              
+ 136   5                                                      break;
+ 137   5                                                      
+ 138   5                                              case 3:
+ 139   5                                              
+ 140   5                                                      break;
+ 141   5                                      }
+ 142   4                                      mainstate = STA_PLAY_GAME;
+ 143   4                                      break;
+ 144   4                              }
+ 145   3                                      
+ 146   3                              case STA_PLAY_GAME:
+ 147   3                              {
+ 148   4                                      switch (which_game)
+ 149   4                                      {
+ 150   5                                              case 1:
+ 151   5                                              
+ 152   5                                                      break;
+ 153   5                                                      
+ 154   5                                              case 2:
+ 155   5                                              
+ 156   5                                                      break;
+ 157   5                                                      
+ 158   5                                              case 3:
+ 159   5                                              
+ 160   5                                                      break;
+ 161   5                                      }
+ 162   4                                      
+ 163   4                                      if(gameover_flg)
+ 164   4                                      {
+ 165   5                                              mainstate = STA_GAMEOVER;
+ 166   5                                      }
+ 167   4                                      break;
+ 168   4                              }
+ 169   3                              
+ 170   3                              case STA_GAMEOVER:
+ 171   3                              {
+ 172   4                                      
+ 173   4                                      mainstate = STA_SELECTION_MENU;
+ 174   4                              }
+ 175   3                                      
+ 176   3                      }
+ 177   2                      
+C51 COMPILER V9.52.0.0   MAIN                                                              08/16/2015 16:49:23 PAGE 4   
+
+ 178   2                      refresh();
+ 179   2              }
+ 180   1      }
+ 181          
+ 182          
+ 183          /* Timer0 interrupt routine */
+ 184          void tm0_isr() interrupt 1
+ 185          {
+ 186   1              if(!RXD) RESET_SYSTEM;//自动下载
+ 187   1              
+ 188   1              IRQ_DISABLE;
+ 189   1              
+ 190   1              Display_now();
+ 191   1              Keypad_scan_poll();
+ 192   1              
+ 193   1              IRQ_ENABLE;
+ 194   1      }
+ 195          
+ 196          
+ 197          
+ 198          
+ 199          
+ 200          
+ 201          
+ 202          
+ 203          
+ 204          
+ 205          
+ 206          
+ 207          
+ 208          
+ 209          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    386    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     18      20
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

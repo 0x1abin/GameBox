@@ -18,6 +18,9 @@
 
 #include <intrins.h>
 
+#define MAIN_Fosc  24000000L
+//#define MAIN_Fosc  11059200L
+
 /*  BYTE Registers  */
 sfr P0   = 0x80;
 sfr SP   = 0x81;
@@ -809,6 +812,8 @@ sbit PX0	= IP^0;	//外部中断0优先级设定位
 #define ISP_WAIT_20MHZ	2
 #define ISP_WAIT_24MHZ	1
 #define ISP_WAIT_30MHZ	0
+
+
 
 #if (MAIN_Fosc >= 24000000L)
 	#define		ISP_WAIT_FREQUENCY	ISP_WAIT_30MHZ

@@ -24,6 +24,7 @@ typedef unsigned char uchar;
 typedef unsigned char U8; 
 typedef unsigned char UINT8; 
 typedef unsigned char uint8; 
-typedef unsigned char BOOL; 
+typedef bit BOOL; 
+typedef bit bool; 
 
 #endif
