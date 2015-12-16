@@ -90,7 +90,7 @@ void Test_mode()
 	buffcpy(imbuff, 0, S_ON, sizeof(S_ON));
 	
 	
-} 
+}   
 
 void main()
 {
