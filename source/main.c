@@ -11,6 +11,14 @@
 #define STA_PLAY_GAME			4
 #define STA_GAMEOVER			5
 
+void (*pfunc_playGame[5])(void)={
+	Game_1,
+	Game_2,
+	Game_3,
+	Game_4,
+	Game_5
+};
+//(*pfunc_playGame[0])();
 
 uint8 imbuff[16] = 0;
 uint8 which_game = 0;
