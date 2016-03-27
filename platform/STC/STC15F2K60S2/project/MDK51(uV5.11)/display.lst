@@ -1,0 +1,314 @@
+C51 COMPILER V9.52.0.0   DISPLAY                                                           03/27/2016 13:54:27 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE DISPLAY
+OBJECT MODULE PLACED IN ..\..\Output\display.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ..\..\source\HAL\display.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\..\source;..\
+                    -..\source\HAL) DEBUG OBJECTEXTEND PRINT(.\display.lst) OBJECT(..\..\Output\display.obj)
+
+line level    source
+
+   1          //#include "config.h"
+   2          #include "common.h"
+   3          
+   4          /*
+   5                              ^
+   6              8 7 6 5 4 3 2 1 Y
+   7           16 x x x x x x x x |
+   8           15 x x x x x x x x |
+   9           14 x x x x x x x x |
+  10           13 x x x x x x x x |
+  11           12 x x x x x x x x |
+  12           11 x x x x x x x x |
+  13           10 x x x x x x x x |
+  14           09 x x x x x x x x |
+  15           08 x x x x x x x x |
+  16           07 x x x x x x x x |
+  17           06 x x x x x x x x |
+  18           05 x x x x x x x x |
+  19           04 x x x x x x x x |
+  20           03 x x x x x x x x |
+  21           02 x x x x x x x x |
+  22           01 x x x x x x x x |
+  23          <X------------------
+  24          */
+  25          
+  26          
+  27          uint8 xbuff[16];
+  28          
+  29          void Tns(uint8 n)//¶ÌÔÝÑÓÊ±
+  30          {
+  31   1              while(n--);
+  32   1      }
+  33          
+  34          void Display_init()
+  35          {
+  36   1              uint8 i;
+  37   1              for(i=0; i<16; i++)
+  38   1              {
+  39   2                      xbuff[i] = 0;
+  40   2              }
+  41   1              
+  42   1              SET_OUT_PUSH_LED_P0;
+  43   1              SET_OUT_PUSH_LED_P1;
+  44   1              SET_OUT_PUSH_LED_P2;
+  45   1              SET_OUT_PUSH_LED_P4;
+  46   1              
+  47   1      }
+  48          
+  49          void Select_Row(uint8 row)
+  50          {
+  51   1              switch (row)
+  52   1              {
+  53   2                      case 0:
+  54   2                              // LED_ROW_A1_OFF;
+C51 COMPILER V9.52.0.0   DISPLAY                                                           03/27/2016 13:54:27 PAGE 2   
+
+  55   2                              LED_ROW_B8_ON;
+  56   2                              break;
+  57   2                      case 1:
+  58   2                              LED_ROW_B8_OFF;
+  59   2                              LED_ROW_B7_ON;
+  60   2                              break;
+  61   2                      case 2:
+  62   2                              LED_ROW_B7_OFF;
+  63   2                              LED_ROW_B6_ON;
+  64   2                              break;
+  65   2                      case 3:
+  66   2                              LED_ROW_B6_OFF;
+  67   2                              LED_ROW_B5_ON;
+  68   2                              break;
+  69   2                      case 4:
+  70   2                              LED_ROW_B5_OFF;
+  71   2                              LED_ROW_B4_ON;
+  72   2                              break;
+  73   2                      case 5:
+  74   2                              LED_ROW_B4_OFF;
+  75   2                              LED_ROW_B3_ON;
+  76   2                              break;
+  77   2                      case 6:
+  78   2                              LED_ROW_B3_OFF;
+  79   2                              LED_ROW_B2_ON;
+  80   2                              break;
+  81   2                      case 7:
+  82   2                              LED_ROW_B2_OFF;
+  83   2                              LED_ROW_B1_ON;
+  84   2                              break;
+  85   2                      case 8:
+  86   2                              LED_ROW_B1_OFF;
+  87   2                              LED_ROW_A8_ON;
+  88   2                              break;
+  89   2                      case 9:
+  90   2                              LED_ROW_A8_OFF;
+  91   2                              LED_ROW_A7_ON;
+  92   2                              break;
+  93   2                      case 10:
+  94   2                              LED_ROW_A7_OFF;
+  95   2                              LED_ROW_A6_ON;
+  96   2                              break;
+  97   2                      case 11:
+  98   2                              LED_ROW_A6_OFF;
+  99   2                              LED_ROW_A5_ON;
+ 100   2                              break;
+ 101   2                      case 12:
+ 102   2                              LED_ROW_A5_OFF;
+ 103   2                              LED_ROW_A4_ON;
+ 104   2                              break;
+ 105   2                      case 13:
+ 106   2                              LED_ROW_A4_OFF;
+ 107   2                              LED_ROW_A3_ON;
+ 108   2                              break;
+ 109   2                      case 14:
+ 110   2                              LED_ROW_A3_OFF;
+ 111   2                              LED_ROW_A2_ON;
+ 112   2                              break;
+ 113   2                      case 15:
+ 114   2                              LED_ROW_A2_OFF;
+ 115   2                              LED_ROW_A1_ON;
+ 116   2                              break;  
+C51 COMPILER V9.52.0.0   DISPLAY                                                           03/27/2016 13:54:27 PAGE 3   
+
+ 117   2                      default:
+ 118   2                              break;          
+ 119   2              }
+ 120   1      }
+ 121          
+ 122          void Display_now() 
+ 123          {
+ 124   1              uint8 x,y,tmp;
+ 125   1              for(y=0; y<16; y++)
+ 126   1              {
+ 127   2                      tmp = xbuff[y];
+ 128   2                      Select_Row(y);
+ 129   2                      for(x=1;x<9;x++)
+ 130   2                      {
+ 131   3                              switch (x)
+ 132   3                              {
+ 133   4                                      case 1:
+ 134   4      //                                      LED_COL_8_OFF;
+ 135   4                                              if(tmp & 0x01)
+ 136   4                                                      LED_COL_1_ON;
+ 137   4                                              else
+ 138   4                                                      LED_COL_1_OFF;
+ 139   4                                              break;
+ 140   4                                              
+ 141   4                                      case 2:
+ 142   4                                              LED_COL_1_OFF;
+ 143   4                                              if(tmp & 0x01)
+ 144   4                                                      LED_COL_2_ON;
+ 145   4                                              else
+ 146   4                                                      LED_COL_2_OFF;
+ 147   4                                              break;
+ 148   4                                              
+ 149   4                                      case 3:
+ 150   4                                              LED_COL_2_OFF;
+ 151   4                                              if(tmp & 0x01)
+ 152   4                                                      LED_COL_3_ON;
+ 153   4                                              else
+ 154   4                                                      LED_COL_3_OFF;
+ 155   4                                              break;
+ 156   4                                              
+ 157   4                                      case 4:
+ 158   4                                              LED_COL_3_OFF;
+ 159   4                                              if(tmp & 0x01)
+ 160   4                                                      LED_COL_4_ON;
+ 161   4                                              else
+ 162   4                                                      LED_COL_4_OFF;
+ 163   4                                              break;
+ 164   4                                              
+ 165   4                                      case 5:
+ 166   4                                              LED_COL_4_OFF;
+ 167   4                                              if(tmp & 0x01)
+ 168   4                                                      LED_COL_5_ON;
+ 169   4                                              else
+ 170   4                                                      LED_COL_5_OFF;
+ 171   4                                              break;
+ 172   4                                              
+ 173   4                                      case 6:
+ 174   4                                              LED_COL_5_OFF;
+ 175   4                                              if(tmp & 0x01)
+ 176   4                                                      LED_COL_6_ON;
+ 177   4                                              else
+ 178   4                                                      LED_COL_6_OFF;
+C51 COMPILER V9.52.0.0   DISPLAY                                                           03/27/2016 13:54:27 PAGE 4   
+
+ 179   4                                              break;
+ 180   4                                              
+ 181   4                                      case 7:
+ 182   4                                              LED_COL_6_OFF;
+ 183   4                                              if(tmp & 0x01)
+ 184   4                                                      LED_COL_7_ON;
+ 185   4                                              else
+ 186   4                                                      LED_COL_7_OFF;
+ 187   4                                              break;
+ 188   4                                              
+ 189   4                                      case 8:
+ 190   4                                              LED_COL_7_OFF;
+ 191   4                                              if(tmp & 0x01)
+ 192   4                                                      LED_COL_8_ON;
+ 193   4                                              else
+ 194   4                                                      LED_COL_8_OFF;
+ 195   4                                              break;
+ 196   4                                              
+ 197   4                                      default:
+ 198   4                                              break;  
+ 199   4                              }
+ 200   3                              Tns(20);
+ 201   3                              tmp >>= 1;
+ 202   3                      }
+ 203   2                      LED_COL_8_OFF;
+ 204   2              }
+ 205   1              LED_ROW_A1_OFF;
+ 206   1      }
+ 207          
+ 208          
+ 209          /*
+ 210          
+ 211          void DisPoint(uint8 x,uint8 y)
+ 212          {
+ 213                  #define L_ON 0
+ 214                  ROW_data(88);   //Çå³ý
+ 215                  Data_CLR(B);
+ 216                  
+ 217                  ROW_data(y);    //ÐÐÑ¡Ôñ
+ 218                  switch (x)
+ 219                  {
+ 220                          case 0: LED_D0 = L_ON;  break;
+ 221                          case 1: LED_D1 = L_ON;  break;
+ 222                          case 2: LED_D2 = L_ON;  break;
+ 223                          case 3: LED_D3 = L_ON;  break;
+ 224                          case 4: LED_D4 = L_ON;  break;
+ 225                          case 5: LED_D5 = L_ON;  break;
+ 226                          case 6: LED_D6 = L_ON;  break;
+ 227                          case 7: LED_D7 = L_ON;  break;
+ 228                  }
+ 229          }
+ 230          
+ 231          void SMG_Num(uint8 n)   //ÊýÂë¹Ü¶ÎÂë
+ 232          {
+ 233                  switch (n)
+ 234                  {
+ 235                          case 0: SMG_A = ON; SMG_B = ON; SMG_C = ON; SMG_D = ON; SMG_E = ON; SMG_F = ON;
+ 236                                  break;
+ 237                          case 1: SMG_B = ON; SMG_C = ON;
+ 238                                  break;
+ 239                          case 2: SMG_A = ON; SMG_B = ON; SMG_D = ON; SMG_E = ON; SMG_G = ON;
+ 240                                  break;
+C51 COMPILER V9.52.0.0   DISPLAY                                                           03/27/2016 13:54:27 PAGE 5   
+
+ 241                          case 3: SMG_A = ON; SMG_B = ON; SMG_C = ON; SMG_D = ON; SMG_G = ON;
+ 242                                  break;
+ 243                          case 4: SMG_B = ON; SMG_C = ON; SMG_F = ON; SMG_G = ON;
+ 244                                  break;
+ 245                          case 5: SMG_A = ON; SMG_C = ON; SMG_D = ON; SMG_F = ON; SMG_G = ON;
+ 246                                  break;
+ 247                          case 6: SMG_A = ON; SMG_C = ON; SMG_D = ON; SMG_E = ON; SMG_F = ON; SMG_G = ON;
+ 248                                  break;
+ 249                          case 7: SMG_A = ON; SMG_B = ON; SMG_C = ON;
+ 250                                  break;
+ 251                          case 8: SMG_A = ON; SMG_B = ON; SMG_C = ON; SMG_D = ON; SMG_E = ON; SMG_F = ON; SMG_G = ON;
+ 252                                  break;
+ 253                          case 9: SMG_A = ON; SMG_B = ON; SMG_C = ON; SMG_D = ON; SMG_F = ON; SMG_G = ON;
+ 254                                  break;
+ 255                  }
+ 256          }
+ 257          void SMG_Display(uint16 goal,uint8 duty)
+ 258          {
+ 259                  
+ 260                  ROW_data(88);//ÆÁ±ÎµãÕó
+ 261                  
+ 262                  Data_CLR(A);
+ 263                  Tns(100-duty);
+ 264                  SMG_S1 = 0;
+ 265                  SMG_Num(goal/100);
+ 266                  Tns(duty);
+ 267                  
+ 268                  Data_CLR(A);
+ 269                  Tns(100-duty);
+ 270                  SMG_S1 = 1; SMG_S2 = 0; 
+ 271                  SMG_Num(goal/10%10);
+ 272                  Tns(duty);
+ 273                  
+ 274                  Data_CLR(A);
+ 275                  Tns(100-duty);
+ 276                  SMG_S2 = 1; SMG_S3 = 0;
+ 277                  SMG_Num(goal%10);
+ 278                  Tns(duty);
+ 279                  
+ 280                  SMG_S3 = 1;
+ 281          }
+ 282          */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    383    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     16    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

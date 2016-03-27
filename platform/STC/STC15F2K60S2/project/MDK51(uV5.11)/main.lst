@@ -1,0 +1,252 @@
+C51 COMPILER V9.52.0.0   MAIN                                                              03/27/2016 13:54:27 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\..\Output\main.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ..\..\source\main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\..\source;..\..\sour
+                    -ce\HAL) DEBUG OBJECTEXTEND PRINT(.\main.lst) OBJECT(..\..\Output\main.obj)
+
+line level    source
+
+   1          #include "common.h"
+   2          // #include "config.h"
+   3          
+   4          #define RESET_SYSTEM            {IAP_CONTR=0x60;}
+   5          #define IRQ_ENABLE                      EA = 1
+   6          #define IRQ_DISABLE                     EA = 0
+   7          
+   8          #define STA_WELCOME_SCREEN              1
+   9          #define STA_SELECTION_MENU              2
+  10          #define STA_INITIALIZE_GAME             3
+  11          #define STA_PLAY_GAME                   4
+  12          #define STA_GAMEOVER                    5
+  13          
+  14          void (*pfunc_playGame[5])(void)={
+  15                  Game_1,
+*** ERROR C202 IN LINE 15 OF ..\..\source\main.c: 'Game_1': undefined identifier
+  16                  Game_2,
+*** ERROR C202 IN LINE 16 OF ..\..\source\main.c: 'Game_2': undefined identifier
+  17                  Game_3,
+*** ERROR C202 IN LINE 17 OF ..\..\source\main.c: 'Game_3': undefined identifier
+  18                  Game_4,
+*** ERROR C202 IN LINE 18 OF ..\..\source\main.c: 'Game_4': undefined identifier
+  19                  Game_5
+  20          };
+*** ERROR C202 IN LINE 20 OF ..\..\source\main.c: 'Game_5': undefined identifier
+  21          
+  22          
+  23          typedef struct _GMAE_
+  24          {
+  25                  void (*pGameInit)(void);
+  26                  void (*pGamePlay)(void);
+  27                  void (*pGameEnd)(void);
+  28                  uint8_t preview[4][8];
+*** ERROR C141 IN LINE 28 OF ..\..\source\main.c: syntax error near 'uint8_t'
+*** ERROR C129 IN LINE 28 OF ..\..\source\main.c: missing ';' before 'preview'
+  29                  
+  30          }GAME;
+  31          
+  32          
+  33          uint8 imbuff[16] = 0;
+  34          uint8 which_game = 0;
+  35          uint8 mainstate = STA_WELCOME_SCREEN;
+  36          BOOL gameover_flg = 0;
+  37          
+  38          void buffcpy(uint8 *dest, uint8 pt, const uint8 *src, uint8 length)
+  39          {
+  40                  uint8 i,p;
+  41                  for(i=0,p=pt; p < ((pt+length)>16 ? 16:(pt+length)); i++,p++)
+  42                  {
+  43                          dest[p] = src[i];
+  44                  }
+  45          }
+  46          
+  47          void buffcpy_16byte(uint8 *dest, const uint8 *src)
+C51 COMPILER V9.52.0.0   MAIN                                                              03/27/2016 13:54:27 PAGE 2   
+
+  48          {
+  49                  uint8 i;
+  50                  for(i=0; i<16; i++)
+  51                  {
+  52                          dest[i] = src[i];
+  53                  }
+  54          }
+  55          
+  56          void clear(uint8 *buf)
+  57          {
+  58                  uint8 i;
+  59                  for(i=0; i<16; i++)
+  60                  {
+  61                          buf[i] = 0;
+  62                  }
+  63          }
+  64          
+  65          void refresh()
+  66          {
+  67                  uint8 i;
+  68                  for(i=0; i<16; i++)
+  69                  {
+  70                          xbuff[i] = imbuff[i];
+  71                  }
+  72          }
+  73          
+  74          
+  75          void Timer0Init(void)   //1毫秒@24.000MHz
+  76          {
+  77                  AUXR |= 0x80;           //定时器时钟1T模式
+  78                  TMOD &= 0xF0;           //设置定时器模式
+  79                  TL0 = 0x40;                     //设置定时初值
+  80                  TH0 = 0xA2;                     //设置定时初值
+  81                  TF0 = 0;                        //清除TF0标志
+  82                  TR0 = 1;                        //定时器0开始计时 
+  83                  
+  84                  ET0 = 1;                //使能定时器0中断
+  85                  // EA = 1;
+  86          }
+  87          
+  88          void Test_mode()
+  89          {
+  90                  code uint8 S_Logo[8]={0x00,0x19,0x2A,0xC8,0x8B,0xC8,0x2A,0x19};
+  91                  code uint8 S_ON[8]={0x00,0x00,0x42,0x62,0x52,0x4A,0x46,0x42};/*ON*/
+  92                  
+  93                  uint8 i;
+  94                  
+  95                  clear(imbuff);
+  96                  // for(i=0; i<8; i++)
+  97                  // {
+  98                          // imbuff[i] = S_ON[i];
+  99                  // }
+ 100                  
+ 101                  // for(i=0; i<8; i++)
+ 102                  // {
+ 103                          // imbuff[i+7] = S_Logo[i];
+ 104                  // }
+ 105                  
+ 106                  buffcpy(imbuff, 8, S_Logo, sizeof(S_Logo));
+ 107                  
+ 108                  buffcpy(imbuff, 0, S_ON, sizeof(S_ON));
+ 109                  
+C51 COMPILER V9.52.0.0   MAIN                                                              03/27/2016 13:54:27 PAGE 3   
+
+ 110                  
+ 111          }   
+ 112          
+ 113          void main()
+ 114          {
+ 115                  IRQ_DISABLE;
+ 116                  
+ 117                  Timer0Init();
+ 118                  Display_init();
+ 119                  keypad_init();
+ 120                  
+ 121                  Test_mode();
+ 122                  IRQ_ENABLE;
+ 123                  
+ 124                  while(1)
+ 125                  {
+ 126                          switch (mainstate)
+ 127                          {
+ 128                                  case STA_WELCOME_SCREEN:
+ 129                                  {
+ 130                                          
+ 131                                          mainstate = STA_SELECTION_MENU;
+ 132                                          break;          
+ 133                                  }
+ 134                                  
+ 135                                  case STA_SELECTION_MENU:
+ 136                                  {
+ 137                                          if(which_game != 0)
+ 138                                          {
+ 139                                                  mainstate = STA_INITIALIZE_GAME;
+ 140                                          }       
+ 141                                          break;
+ 142                                  }
+ 143                                  
+ 144                                  case STA_INITIALIZE_GAME:
+ 145                                  {
+ 146                                          switch (which_game)
+ 147                                          {
+ 148                                                  case 1:
+ 149                                                  
+ 150                                                          break;
+ 151                                                          
+ 152                                                  case 2:
+ 153                                                  
+ 154                                                          break;
+ 155                                                          
+ 156                                                  case 3:
+ 157                                                  
+ 158                                                          break;
+ 159                                          }
+ 160                                          mainstate = STA_PLAY_GAME;
+ 161                                          break;
+ 162                                  }
+ 163                                          
+ 164                                  case STA_PLAY_GAME:
+ 165                                  {
+ 166                                          switch (which_game)
+ 167                                          {
+ 168                                                  case 1:
+ 169                                                  
+ 170                                                          break;
+ 171                                                          
+C51 COMPILER V9.52.0.0   MAIN                                                              03/27/2016 13:54:27 PAGE 4   
+
+ 172                                                  case 2:
+ 173                                                  
+ 174                                                          break;
+ 175                                                          
+ 176                                                  case 3:
+ 177                                                  
+ 178                                                          break;
+ 179                                          }
+ 180                                          
+ 181                                          if(gameover_flg)
+ 182                                          {
+ 183                                                  mainstate = STA_GAMEOVER;
+ 184                                          }
+ 185                                          break;
+ 186                                  }
+ 187                                  
+ 188                                  case STA_GAMEOVER:
+ 189                                  {
+ 190                                          
+ 191                                          mainstate = STA_SELECTION_MENU;
+ 192                                  }
+ 193                                          
+ 194                          }
+ 195                          
+ 196                          refresh();
+ 197                  }
+ 198          }
+ 199          
+ 200          
+ 201          /* Timer0 interrupt routine */
+ 202          void tm0_isr() interrupt 1
+ 203          {
+ 204                  if(!RXD) RESET_SYSTEM;//自动下载
+ 205                  
+ 206                  IRQ_DISABLE;
+ 207                  
+ 208                  Display_now();
+ 209                  Keypad_scan_poll();
+ 210                  
+ 211                  IRQ_ENABLE;
+ 212          }
+ 213          
+ 214          
+ 215          
+ 216          
+ 217          
+ 218          
+ 219          
+ 220          
+ 221          
+ 222          
+ 223          
+ 224          
+ 225          
+ 226          
+ 227          
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  7 ERROR(S)
