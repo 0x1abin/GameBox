@@ -27,7 +27,7 @@ v2.0:
 
 
 #include "gamebox.h"
- 
+
 
 enum
 {

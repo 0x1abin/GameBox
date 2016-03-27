@@ -1,6 +1,0 @@
-"..\..\Output\STARTUP.obj",
-"..\..\Output\main.obj",
-"..\..\Output\display.obj",
-"..\..\Output\keypad.obj" 
-TO "..\..\Output\GameBox_2.0" 
-PRINT(".\GameBox_2.m51") RAMSIZE(256) 
