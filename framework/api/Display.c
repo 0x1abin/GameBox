@@ -26,7 +26,25 @@
 
 uint8 xbuff[16];
 
-void Tns(uint8 n)//∂Ã‘›—” ±
+void clear(uint8 *buf)
+{
+	uint8 i;
+	for(i=0; i<16; i++)
+	{
+		buf[i] = 0;
+	}
+}
+
+void refresh()
+{
+	uint8 i;
+	for(i=0; i<16; i++)
+	{
+		xbuff[i] = imbuff[i];
+	}
+}
+
+void Tns(uint8 n)//ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ±
 {
 	while(n--);
 }
@@ -211,10 +229,10 @@ void Display_now()
 void DisPoint(uint8 x,uint8 y)
 {
 	#define L_ON 0
-	ROW_data(88);	//«Â≥˝
+	ROW_data(88);	//ÔøΩÔøΩÔøΩÔøΩ
 	Data_CLR(B);
 	
-	ROW_data(y);	//––—°‘Ò
+	ROW_data(y);	//ÔøΩÔøΩ—°ÔøΩÔøΩ
 	switch (x)
 	{
 		case 0:	LED_D0 = L_ON;	break;
@@ -228,7 +246,7 @@ void DisPoint(uint8 x,uint8 y)
 	}
 }
 
-void SMG_Num(uint8 n)	// ˝¬Îπ‹∂Œ¬Î
+void SMG_Num(uint8 n)	//ÔøΩÔøΩÔøΩÔøΩÔøΩ‹∂ÔøΩÔøΩÔøΩ
 {
 	switch (n)
 	{
@@ -257,7 +275,7 @@ void SMG_Num(uint8 n)	// ˝¬Îπ‹∂Œ¬Î
 void SMG_Display(uint16 goal,uint8 duty)
 {
 	
-	ROW_data(88);//∆¡±Œµ„’Û
+	ROW_data(88);//ÔøΩÔøΩÔøΩŒµÔøΩÔøΩÔøΩ
 	
 	Data_CLR(A);
 	Tns(100-duty);

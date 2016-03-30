@@ -24,14 +24,12 @@ v2.0:
 	2016-3-27  16:35:46 :全新更成熟程序结构，简化逻辑三层程序结构，更好的可读性和扩展性。
 */
 
-
-
 #include "gamebox.h"
 
 
 enum
-{
-	STA_WELCOME_SCREEN = 0,
+{	
+	STA_STARTUP = 0,
 	STA_WELCOME_SCREEN,
 	STA_SELECTION_MENU,
 	STA_INITIALIZE_GAME,
@@ -62,27 +60,14 @@ GAME_T gamelist[Numbers_Of_Game];
 
 
 uint8 whichGame = 0;
-uint8 mainstate = STA_WELCOME_SCREEN;
+uint8 mainstate = STA_STARTUP;
 
 
-void clear(uint8 *buf)
-{
-	uint8 i;
-	for(i=0; i<16; i++)
-	{
-		buf[i] = 0;
-	}
-}
-
-void refresh()
-{
-	uint8 i;
-	for(i=0; i<16; i++)
-	{
-		xbuff[i] = imbuff[i];
-	}
-}
-
+/**
+  * @brief  Hal_Init.
+  * @param  None.
+  * @retval None.
+  */
 void Hal_Init()
 {
 	HAL_TimerInit();
@@ -91,12 +76,22 @@ void Hal_Init()
 	HAL_Buzer();
 }
 
+/**
+  * @brief  API_Init.
+  * @param  None.
+  * @retval None.
+  */
 void API_Init()
 {
 	Display_init();
 	keypad_init();
 }
 
+/**
+  * @brief  main func.
+  * @param  None.
+  * @retval None.
+  */
 void main()
 {
 	Hal_Init();
@@ -109,6 +104,11 @@ void main()
 	{
 		switch (mainstate)
 		{
+			case STA_STARTUP:
+			
+				mainstate = STA_WELCOME_SCREEN;
+				break;
+				
 			case STA_WELCOME_SCREEN:
 				
 				mainstate = STA_SELECTION_MENU;
@@ -117,7 +117,7 @@ void main()
 			case STA_SELECTION_MENU:
 				GamePreview(&gamelist[].preview[][]);
 				
-				if(whichGame != 0)
+				if(whichGame != 0xff)
 				{
 					mainstate = STA_INITIALIZE_GAME;
 				}
@@ -149,12 +149,44 @@ void main()
 	}
 }
 
-
-void HAL_Timer_1ms_Callback()
+/**
+  * @brief  Register the games.
+  * @param  None.
+  * @retval None.
+  */
+void Register_Game(GameName name, void (*pGameInit)(), void (*pGamePlay)(), void (*pGameEnd)())
 {
-	Display_now();
-	Keypad_scan_poll();
 	
+}
+
+/**
+  * @brief  Register the game background music.
+  * @param  None.
+  * @retval None.
+  */
+void Register_Music(GameName name, uint8_t preview, uint8_t length)
+{
+	
+}
+
+/**
+  * @brief  Register the game preview frames.
+  * @param  None.
+  * @retval None.
+  */
+void Register_Preview(GameName name, uint8_t *preview)
+{
+	
+}
+
+/**
+  * @brief  Hal timer callbock 1ms once.
+  * @param  None.
+  * @retval None.
+  */
+void HAL_Timer_Callback()
+{
+	TimerUpdate();
 }
 
 
