@@ -23,12 +23,15 @@ Y 01 x x x x x x x x
 * X------------------>
 
 */
+//scratch paper
+void GUI_SetDrawingPaper(uint8_t *paper);
 
-void GUI_Clear            (void);
-void GUI_ClearRect        (int x0, int y0, int x1, int y1);
-void GUI_DrawPoint        (int x, int y);
-void GUI_DrawHLine        (int y0, int x0, int x1);
-void GUI_DrawLine         (int x0, int y0, int x1, int y1);
-void GUI_DrawRect         (int x0, int y0, int x1, int y1);
+void GUI_Clear      (void);
+void GUI_ClearRect  (int8_t x0, int8_t y0, int8_t x1, int8_t y1);
+void GUI_DrawPoint  (int8_t x, int8_t y);
+bool GUI_ReadPoint  (int8_t x, int8_t y);
+void GUI_DrawHLine  (int8_t y0, int8_t x0, int8_t x1);
+void GUI_DrawLine   (int8_t x0, int8_t y0, int8_t x1, int8_t y1);
+void GUI_DrawRect   (int8_t x0, int8_t y0, int8_t x1, int8_t y1);
+
 //void GUI_DrawLineRel      (int dx, int dy);
-//void GUI_DrawLineTo       (int x, int y);

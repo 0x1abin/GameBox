@@ -23,9 +23,40 @@ Y 01 x x x x x x x x
 
 */
 
+enum
+{
+    D_RIGHT,
+    D_LEFT,
+    D_UP,
+    D_DOWN
+}direction
+
 const uint8_t bitman_OR[9] {0, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
 const uint8_t bitman_AND[9]{0, 0x7F, 0xBF, 0xDF, 0xEF, 0xF7, 0xFB, 0xFD, 0xFE};
 
+uint8_t mainPaper[8];
+uint8_t scratchPaper[8];
+uint8_t *currentPaper;
+
+
+/** Set the targe point drawing paper.
+ *  @param *paper: The targer draw paper.
+ */
+void GUI_SetDrawingPaper(uint8_t *paper)
+{
+    *currentPaper = *paper;
+}
+
+/** Merge the exPaper drawing to the current paper.
+ *  @param *exPaper: To merge paper.
+ */
+void GUI_MergePaper(uint8_t *exPaper)
+{
+    uint8_t i;
+    
+    for(i=0; i<16; i++)
+        currentPaper[i] |= exPaper[i];
+}
 
 /** Fills the display / the active window with the background color.
  *  @param 
@@ -34,29 +65,27 @@ void GUI_Clear(void)
 {
     uint8_t i;
     for(i=0; i<16; i++)
-        _buff[i] = 0;
+        currentPaper[i] = 0;
 }
-
 
 /** GUI_ClearPoint.
- *  @param x
- *  @param y
+ *  @param x:
+ *  @param y:
  */
-void GUI_ClearPoint(int x, int y)
+void GUI_ClearPoint(int8_t x, int8_t y)
 {
-    _buff[y-1] &= bitman_AND[x];
+    currentPaper[y-1] &= bitman_AND[x];
 }
 
-
 /** Fills a rectangular area with the background color.
- *  @param x0 Upper left X-position.
- *  @param y0 Upper left Y-position.
- *  @param x1 Lower right X-position.
- *  @param y1 Lower right Y-position.
+ *  @param x0: Upper left X-position.
+ *  @param y0: Upper left Y-position.
+ *  @param x1: Lower right X-position.
+ *  @param y1: Lower right Y-position.
  */
-void GUI_ClearRect(int x0, int y0, int x1, int y1)
+void GUI_ClearRect(int8_t x0, int8_t y0, int8_t x1, int8_t y1)
 {
-    uint8_t i;
+    int8_t i;
     uint8_t clearMask = 0;
     
     for(i=x0; i<=x1; i++)
@@ -65,27 +94,38 @@ void GUI_ClearRect(int x0, int y0, int x1, int y1)
     clearMask = ~clearMask;
     
     for(i=y0; i<=y1; i++)
-        _buff[i-1] &= clearMask;
+        currentPaper[i-1] &= clearMask;
 }
-
 
 /** Draws a point.
- *  @param x X-position of point.
- *  @param y Y-position of point.
+ *  @param x: X-position of point.
+ *  @param y: Y-position of point.
  */
-void GUI_DrawPoint(int x, int y)
+void GUI_DrawPoint(int8_t x, int8_t y)
 {
-    _buff[y-1] |= bitman_OR[x];
+    currentPaper[y-1] |= bitman_OR[x];
 }
 
+/** Read a point.
+ *  @param x: X-position of point.
+ *  @param y: Y-position of point.
+ *  @return a point value.
+ */
+bool GUI_ReadPoint(int8_t x, int8_t y)
+{
+    if((currentPaper[y-1] & bitman_OR[x]) == 0)
+        return 0;
+    else
+        return 1;
+}
 
 /** Draws a rectangle at a specified position in the current window.
- *  @param x0 Upper left X-position.
- *  @param y0 Upper left Y-position.
- *  @param x1 Lower right X-position.
- *  @param y1 Lower right Y-position.
+ *  @param x0: Upper left X-position.
+ *  @param y0: Upper left Y-position.
+ *  @param x1: Lower right X-position.
+ *  @param y1: Lower right Y-position.
  */
-void GUI_DrawRect(int x0, int y0, int x1, int y1)
+void GUI_DrawRect(int8_t x0, int8_t y0, int8_t x1, int8_t y1)
 {
     uint8_t i;
     uint8_t drawMask = 0;
@@ -95,5 +135,73 @@ void GUI_DrawRect(int x0, int y0, int x1, int y1)
         
     
     for(i=y0; i<=y1; i++)
-        _buff[i-1] |= drawMask;
+        currentPaper[i-1] |= drawMask;
+}
+
+/** Draws a line from a specified starting point to a specified endpoint in the current window (absolute coordinates).
+ *  @param x0: X-starting position.
+ *  @param y0: Y-starting position.
+ *  @param x1: X-end position.
+ *  @param y1: Y-end position.
+ */
+void GUI_DrawLine(int8_t x0, int8_t y0, int8_t x1, int8_t y1)
+{
+    int8_t i, k, a;
+    k = (y0 - y1) / (x0 - x1);
+    a = y0 - k*x0;
+    
+    for(i=x0; i<=x1; i++)
+    {
+        GUI_DrawPoint(i, (k*i+a));
+    }
+}
+
+/** GUI_DrawingMoving.
+ *  @param mvX: X-starting position.
+ *  @param mvY: Y-end position.
+ */
+void GUI_DrawingMoving(int8_t mvX, int8_t mvY)
+{
+    int8_t i;
+    
+    //lengthways moving
+    if(mvY > 0)
+    {
+        for(i=15; i>=0; i--)
+        {
+            if(i-mv > 0)
+                currentPaper[i] = currentPaper[i-mvY];
+            else
+                currentPaper[i] = 0;
+        }
+        
+    }
+    else if(mvY < 0)
+    {
+        for(i=0; i>=15; i++)
+        {
+            if(i-mv < 15)
+                currentPaper[i] = currentPaper[i-mvY];
+            else
+                currentPaper[i] = 0;
+        }
+    }
+    
+    //crosswise moving
+    if(mvX > 0)
+    {
+        for(i=0; i<=15; i++)
+            currentPaper[i] >>= mvX;
+    }
+    else if(mvX < 0)
+    {
+        for(i=0; i<=15; i++)
+            currentPaper[i] <<= (-mvX);
+    }
+    
+}
+
+void GUI_DrawingInsertMoving(uint8_t *insertXPaper, uint8_t *insertYPaper, int8_t mvX, int8_t mvY)
+{
+    
 }
