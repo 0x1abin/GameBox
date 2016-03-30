@@ -34,4 +34,5 @@ void GUI_DrawHLine  (int8_t y0, int8_t x0, int8_t x1);
 void GUI_DrawLine   (int8_t x0, int8_t y0, int8_t x1, int8_t y1);
 void GUI_DrawRect   (int8_t x0, int8_t y0, int8_t x1, int8_t y1);
 
+void GUI_refresh    (void);
 //void GUI_DrawLineRel      (int dx, int dy);

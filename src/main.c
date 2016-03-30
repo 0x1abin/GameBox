@@ -145,7 +145,6 @@ void main()
 				break;
 		}//end main switch
 		
-		refresh();
 	}
 }
 

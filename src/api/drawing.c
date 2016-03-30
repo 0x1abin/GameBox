@@ -58,6 +58,17 @@ void GUI_MergePaper(uint8_t *exPaper)
         currentPaper[i] |= exPaper[i];
 }
 
+/** Merge the exPaper drawing to the current paper.
+ *  @param *exPaper: To merge paper.
+ */
+void GUI_MergePaperRectMask(uint8_t *exPaper, int8_t x0, int8_t y0, int8_t x1, int8_t y1)
+{
+    uint8_t i;
+    
+    for(i=0; i<16; i++)
+        currentPaper[i] |= exPaper[i];
+}
+
 /** Fills the display / the active window with the background color.
  *  @param 
  */
