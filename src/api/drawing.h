@@ -23,16 +23,25 @@ Y 01 x x x x x x x x
 * X------------------>
 
 */
+
+enum
+{
+    D_RIGHT,
+    D_LEFT,
+    D_UP,
+    D_DOWN
+}direction
+
 //scratch paper
 void GUI_SetDrawingPaper(uint8_t *paper);
 
-void GUI_Clear      (void);
-void GUI_ClearRect  (int8_t x0, int8_t y0, int8_t x1, int8_t y1);
-void GUI_DrawPoint  (int8_t x, int8_t y);
-bool GUI_ReadPoint  (int8_t x, int8_t y);
-void GUI_DrawHLine  (int8_t y0, int8_t x0, int8_t x1);
-void GUI_DrawLine   (int8_t x0, int8_t y0, int8_t x1, int8_t y1);
-void GUI_DrawRect   (int8_t x0, int8_t y0, int8_t x1, int8_t y1);
-
-void GUI_refresh    (void);
+void GUI_Clear           (void);
+void GUI_ClearRect       (int8_t x0, int8_t y0, int8_t x1, int8_t y1);
+void GUI_DrawPoint       (int8_t x, int8_t y);
+bool GUI_ReadPoint       (int8_t x, int8_t y);
+void GUI_DrawHLine       (int8_t y0, int8_t x0, int8_t x1);
+void GUI_DrawLine        (int8_t x0, int8_t y0, int8_t x1, int8_t y1);
+void GUI_DrawRect        (int8_t x0, int8_t y0, int8_t x1, int8_t y1);
+void GUI_DrawingMoving   (int8_t mvX, int8_t mvY);
+void GUI_Refresh         (void);
 //void GUI_DrawLineRel      (int dx, int dy);

@@ -23,16 +23,9 @@ Y 01 x x x x x x x x
 
 */
 
-enum
-{
-    D_RIGHT,
-    D_LEFT,
-    D_UP,
-    D_DOWN
-}direction
 
-const uint8_t bitman_OR[9] {0, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
-const uint8_t bitman_AND[9]{0, 0x7F, 0xBF, 0xDF, 0xEF, 0xF7, 0xFB, 0xFD, 0xFE};
+const uint8_t  bitMask[9] = {0, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
+const uint8_t nbitMask[9] = {0, 0x7F, 0xBF, 0xDF, 0xEF, 0xF7, 0xFB, 0xFD, 0xFE};
 
 uint8_t mainPaper[8];
 uint8_t scratchPaper[8];
@@ -85,7 +78,7 @@ void GUI_Clear(void)
  */
 void GUI_ClearPoint(int8_t x, int8_t y)
 {
-    currentPaper[y-1] &= bitman_AND[x];
+    currentPaper[y-1] &= nbitMask[x];
 }
 
 /** Fills a rectangular area with the background color.
@@ -100,7 +93,7 @@ void GUI_ClearRect(int8_t x0, int8_t y0, int8_t x1, int8_t y1)
     uint8_t clearMask = 0;
     
     for(i=x0; i<=x1; i++)
-        clearMask |= bitman_OR[i];
+        clearMask |= bitMask[i];
         
     clearMask = ~clearMask;
     
@@ -114,7 +107,7 @@ void GUI_ClearRect(int8_t x0, int8_t y0, int8_t x1, int8_t y1)
  */
 void GUI_DrawPoint(int8_t x, int8_t y)
 {
-    currentPaper[y-1] |= bitman_OR[x];
+    currentPaper[y-1] |= bitMask[x];
 }
 
 /** Read a point.
@@ -124,7 +117,7 @@ void GUI_DrawPoint(int8_t x, int8_t y)
  */
 bool GUI_ReadPoint(int8_t x, int8_t y)
 {
-    if((currentPaper[y-1] & bitman_OR[x]) == 0)
+    if((currentPaper[y-1] & bitMask[x]) == 0)
         return 0;
     else
         return 1;
@@ -142,7 +135,7 @@ void GUI_DrawRect(int8_t x0, int8_t y0, int8_t x1, int8_t y1)
     uint8_t drawMask = 0;
     
     for(i=x0; i<=x1; i++)
-        drawMask |= bitman_OR[i];
+        drawMask |= bitMask[i];
         
     
     for(i=y0; i<=y1; i++)
@@ -209,10 +202,5 @@ void GUI_DrawingMoving(int8_t mvX, int8_t mvY)
         for(i=0; i<=15; i++)
             currentPaper[i] <<= (-mvX);
     }
-    
-}
-
-void GUI_DrawingInsertMoving(uint8_t *insertXPaper, uint8_t *insertYPaper, int8_t mvX, int8_t mvY)
-{
     
 }
