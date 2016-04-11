@@ -35,6 +35,7 @@ const coord_t tankMod[6] =
 tank_t tankList_mem[MAX_TANKS];
 tank_t *tankList;
 
+
 void trajectory_update()
 {
     int8_t idxTank, idxBullet;

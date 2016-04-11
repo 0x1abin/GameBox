@@ -1,8 +1,20 @@
 #include "hal_keypad.h"
 
+typedef enum
+{
+  KEY01,         //!< KEY01
+  KEY02,         //!< KEY02
+  KEY03,         //!< KEY03
+  KEY04,         //!< KEY04
+  KEY05,         //!< KEY05
+  KEY06,         //!< KEY06
+  NUMBER_OF_KEYS//!< NUMBER_OF_KEYS
+}
+KEY_NAME_T;
 
 typedef enum
 {
+  KEY_NULL = 0,
   KEY_DOWN,           //!< KEY_DOWN
   KEY_UP,             //!< KEY_UP
   KEY_PRESS,          //!< KEY_PRESS
@@ -11,12 +23,12 @@ typedef enum
   KEY_HOLD_10SEC,     //!< KEY_HOLD_10SEC
   NUMBER_OF_KEY_EVENTS//!< NUMBER_OF_KEY_EVENTS
 }
-KEY_EVENT_T;
+EVENT_T;
 
 typedef struct
 {
-  uint8_t keyname;
-  uint8_t event;
+  KEY_NAME_T keyname;
+  EVENT_T    event;
 }keyEvent_t;
 
 
@@ -127,6 +139,10 @@ bool get_keyEvent(keyEvent_t *getkey)
 	return true;
 }
 
+bool check_KeyEvent(KEY_NAME_T name, EVENT_T event)
+{
+	
+}
 
 /*
 	static uint32_t temp1 = 0;

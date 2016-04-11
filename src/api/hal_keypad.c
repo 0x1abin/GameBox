@@ -23,7 +23,7 @@ typedef struct
 /** HAL_KeyInit.
  *  @param None.
  */
-void HAL_KeyInit()
+void HAL_ButtonsInit()
 {
 	//set keypad connent port to output and high pull.
 }
@@ -32,7 +32,7 @@ void HAL_KeyInit()
 /** HAL_KeyRead.
  *  @param None.
  */
-uint8_t HAL_KeyRead()
+uint8_t HAL_ButtonsRead()
 {
 	uint8_t key_rawData = 0;
 	
@@ -56,7 +56,7 @@ uint8_t HAL_KeyRead()
 }
 
 
-void KeyScan_Poll()
+void Button_Update()
 {
 	#define HOLD_COUNT_THRESHOLD		100
 	

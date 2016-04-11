@@ -1,4 +1,16 @@
-#inlcude "led_driver.h"
+/*******************************************************************************
+* File Name: led_driver.c
+* Version 1.00
+*
+*  Description:
+*   The LED middle-level driver API.
+*
+*  Note:
+********************************************************************************
+* Copyright 2016, Zibin Zheng 
+*******************************************************************************/
+
+#include "led_driver.h"
 
 #define MACRO_ABS(x)	((x>0)?x:-x)
 
@@ -141,8 +153,8 @@ void LED_Task_Ticks()
 				if(--ledsList[index].dimming.ticksCount <= 0)
 				{
 					ledsList[index].dimming.ticksCount = ledsList[index].dimming.ticksCountReload;
-					ledsList[index].dimming.currentLevel = (uint8_t)(ledsList[index].dimming.incDecVal + 
-																								 (int8_t)ledsList[index].dimming.currentLevel);
+					ledsList[index].dimming.currentLevel = (uint8_t)(ledsList[index].dimming.incDecVal \
+					                                      + (int8_t)ledsList[index].dimming.currentLevel);
 					ledsList[index].brightness = ledsList[index].dimming.currentLevel;
 				}
 			}
