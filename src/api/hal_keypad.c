@@ -3,22 +3,14 @@
 
 typedef enum
 {
-  KEY_DOWN,           //!< KEY_DOWN
-  KEY_UP,             //!< KEY_UP
-  KEY_PRESS,          //!< KEY_PRESS
-  KEY_HOLD,           //!< KEY_HOLD
-  KEY_TRIPLE_PRESS,   //!< KEY_TRIPLE_PRESS
-  KEY_HOLD_10SEC,     //!< KEY_HOLD_10SEC
-  NUMBER_OF_KEY_EVENTS//!< NUMBER_OF_KEY_EVENTS
-}
-KEY_EVENT_T;
-
-typedef struct
-{
-  uint8_t keyname;
-  uint8_t event;
-}keyEvent_t;
-
+  KEY01 = 0,     //!< KEY01
+  KEY02,         //!< KEY02
+  KEY03,         //!< KEY03
+  KEY04,         //!< KEY04
+  KEY05,         //!< KEY05
+  KEY06,         //!< KEY06
+  NUMBER_OF_KEYS//!< NUMBER_OF_KEYS
+}BTN_NAME_T;
 
 /** HAL_KeyInit.
  *  @param None.
@@ -55,6 +47,12 @@ uint8_t HAL_ButtonsRead()
 	return key_rawData;
 }
 
+void Button_Update()
+{
+	uint8_t readData = HAL_KeyRead();	     // 1
+	pressTrg = readData & (readData ^ hold); // 2
+	hold = readData;                         // 3
+}
 
 void Button_Update()
 {
@@ -111,6 +109,23 @@ void Button_Update()
 	
 	prevHold = hold;
 }
+
+boolean pressed(uint8_t button)
+{
+	if(dat & button != 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+boolean released(uint8_t button);
+boolean held(uint8_t button, uint8_t time);
+boolean repeat(uint8_t button, uint8_t period);
+uint8_t timeHeld(uint8_t button);
 
 
 bool get_keyEvent(keyEvent_t *getkey)

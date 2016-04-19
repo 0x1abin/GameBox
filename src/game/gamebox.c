@@ -1,4 +1,4 @@
-
+#include "gamebox.h"
 
 enum
 {
