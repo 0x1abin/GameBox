@@ -45,4 +45,5 @@ void GUI_DrawRect        (int8_t x0, int8_t y0, int8_t x1, int8_t y1);
 void GUI_DrawingMoving   (int8_t mvX, int8_t mvY);
 void GUI_Refresh         (void);
 //void GUI_DrawLineRel      (int dx, int dy);
-void GUI_drawBitmap(int16_t x, int16_t y, const uint8_t *bitmap,int16_t w, int16_t h, uint16_t color);
+
+void GUI_DrawBitmap(int8_t x, int8_t y, const uint8_t *bitmap);

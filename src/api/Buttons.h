@@ -20,6 +20,10 @@
 #ifndef BUTTONS_H
 #define	BUTTONS_H
 
+#ifdef __cplusplus
+extern "C"{
+#endif
+
 
 void Buttons_Init();
 void Buttons_update();
@@ -30,6 +34,10 @@ boolean Buttons_held     (uint8_t button, uint8_t time);
 boolean Buttons_repeat   (uint8_t button, uint8_t period);
 uint8_t Buttons_timeHeld (uint8_t button);
 
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
 
 #endif	/* BUTTONS_H */
 
