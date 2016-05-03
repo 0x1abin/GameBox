@@ -26,11 +26,11 @@ Y 01 x x x x x x x x
 
 enum
 {
+    D_UP = 0,
+    D_DOWN,
     D_RIGHT,
-    D_LEFT,
-    D_UP,
-    D_DOWN
-}direction
+    D_LEFT
+}direction_t
 
 //scratch paper
 void GUI_SetDrawingPaper(uint8_t *paper);

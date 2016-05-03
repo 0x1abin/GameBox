@@ -207,11 +207,19 @@ void GUI_DrawingMoving(int8_t mvX, int8_t mvY)
 
 void GUI_DrawBitmap(int8_t x, int8_t y, const uint8_t *bitmap)
 {
-    uint8_t i, mapsize;
+    uint8_t i;
+    uint8_t mapsize = strlen(bitmap);
     
-    mapsize = strlen(bitmap);
-    for(i=y; i<(y+mapsize); i++)
+    if((x > 0) && (x < 16))
     {
-        currentPaper[y] |= (bitmap[y] >> x);
+        for(i=y; i<(y+mapsize); i++)
+        {
+            currentPaper[i] |= (bitmap[i] >> x);
+        }
     }
+    else
+    {
+        
+    }
+    
 }

@@ -135,3 +135,10 @@ uint8_t Buttons_timeHeld(uint8_t button){
         return 0;
     
 }
+
+
+
+uint8_t getButtons()
+{
+    
+}
