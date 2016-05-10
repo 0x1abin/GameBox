@@ -2,13 +2,30 @@
 
 #include "Tank.h"
 
-GameObject game_tank;
 
 #define X_WIDTH_MAX     8
 #define Y_WIDTH_MAX     16
 
 //坦克序号0，是我自己的坦克
 #define MY_TANK     0
+
+
+
+void Tank_Register()
+{
+    static const struct GameObject game_tank = 
+    {
+        .state     = INITIZEAL;
+        .pGameInit = Tank_GameInit;
+        .pGamePlay = Tank_GamePlay;
+        .pGameEnd  = Tank_GameEnd;
+        .preview   = array;
+        .pBGMusic  = tank_music;
+    }
+    
+    Register_Game(TANK, &game_tank);
+}
+
 
 
 
@@ -93,7 +110,7 @@ tank_t *tankList;
 
 
 //更新弹道
-void TrajectoryUpdate()
+static void TrajectoryUpdate()
 {
     uint8_t idxTank, idxBullet;
     
@@ -140,7 +157,7 @@ void TrajectoryUpdate()
 }
 
 //射出一个子弹
-void ShotOnebullet(uint8_t whickTank)
+static void ShotOnebullet(uint8_t whickTank)
 {
     uint8_t idxBullet = 0;
 
@@ -161,13 +178,13 @@ void ShotOnebullet(uint8_t whickTank)
 }
 
 //改变坦克朝向
-void ChangeDirection(uint8_t whickTank, direction_t newDirect)
+static void ChangeDirection(uint8_t whickTank, direction_t newDirect)
 {
     tankList[whickTank]->direct = newDirect;
 }
 
 //往前走一步
-void MoveOneStep(uint8_t whickTank)
+static void MoveOneStep(uint8_t whickTank)
 {
     switch (tankList[whickTank]->direct)
     {
@@ -244,18 +261,6 @@ void Tank_GameEnd()
 }
 
 //------------------------------------------------------------------------------
-
-void Tank_Register()
-{
-    game_tank.state     = INITIZEAL;
-    game_tank.pGameInit = Tank_GameInit;
-    game_tank.pGamePlay = Tank_GamePlay;
-    game_tank.pGameEnd  = Tank_GameEnd;
-    game_tank.preview   = array;
-    game_tank.pBGMusic  = tank_music;
-    
-    Register_Game(TANK, &game_tank);
-}
 
 
 
