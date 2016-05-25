@@ -11,25 +11,6 @@
 
 
 
-void Tank_Register()
-{
-    static const struct GameObject game_tank = 
-    {
-        .state     = INITIZEAL;
-        .pGameInit = Tank_GameInit;
-        .pGamePlay = Tank_GamePlay;
-        .pGameEnd  = Tank_GameEnd;
-        .preview   = array;
-        .pBGMusic  = tank_music;
-    }
-    
-    Register_Game(TANK, &game_tank);
-}
-
-
-
-
-
 const uint8_t utankBitmap[4][4] = 
 {
     B01000000,
@@ -261,6 +242,21 @@ void Tank_GameEnd()
 }
 
 //------------------------------------------------------------------------------
+
+void Tank_Register()
+{
+    static const struct GameObject game_tank = 
+    {
+        .state     = INITIZEAL;
+        .pGameInit = Tank_GameInit;
+        .pGamePlay = Tank_GamePlay;
+        .pGameEnd  = Tank_GameEnd;
+        .preview   = array;
+        .pBGMusic  = tank_music;
+    }
+    
+    Register_Game(TANK, &game_tank);
+}
 
 
 

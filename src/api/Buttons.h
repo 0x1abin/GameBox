@@ -28,10 +28,10 @@ extern "C"{
 void Buttons_Init();
 void Buttons_update();
 
-boolean Buttons_pressed  (uint8_t button);
-boolean Buttons_released (uint8_t button);
-boolean Buttons_held     (uint8_t button, uint8_t time);
-boolean Buttons_repeat   (uint8_t button, uint8_t period);
+bool Buttons_pressed  (uint8_t button);
+bool Buttons_released (uint8_t button);
+bool Buttons_held     (uint8_t button, uint8_t time);
+bool Buttons_repeat   (uint8_t button, uint8_t period);
 uint8_t Buttons_timeHeld (uint8_t button);
 
 
