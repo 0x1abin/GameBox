@@ -1,19 +1,19 @@
-
-
-
+#ifndef _TONE_H_
+#define _TONE_H_
 
 
 #ifdef __cplusplus
 extern "C"{
 #endif
 
-
-void tone(uint8_t _pin, unsigned int frequency, unsigned long duration = 0);
-void noTone(uint8_t _pin);
-
-
-
+//------------------------------------------------------------
+void tone(unsigned int frequency);
+void noTone();
+//------------------------------------------------------------
 
 #ifdef __cplusplus
 } // extern "C"
+#endif
+
+
 #endif

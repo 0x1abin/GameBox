@@ -1,31 +1,31 @@
 /*
 
 ^                    
-|    1 2 3 4 5 6 7 8 
-| 16 x x x x x x x x 
-| 15 x x x x x x x x 
-| 14 x x x x x x x x 
-| 13 x x x x x x x x 
-| 12 x x x x x x x x 
-| 11 x x x x x x x x 
-| 10 x x x x x x x x 
-| 09 x x x x x x x x 
+Y   0 1 2 3 4 5 6 7 
+15| x x x x x x x x 
+14| x x x x x x x x 
+13| x x x x x x x x 
+12| x x x x x x x x 
+11| x x x x x x x x 
+10| x x x x x x x x 
+09| x x x x x x x x 
+08| x x x x x x x x 
 
-| 08 x x x x x x x x 
-| 07 x x x x x x x x 
-| 06 x x x x x x x x 
-| 05 x x x x x x x x 
-| 04 x x x x x x x x 
-| 03 x x x x x x x x 
-| 02 x x x x x x x x 
-Y 01 x x x x x x x x 
-* X------------------>
+07| x x x x x x x x 
+06| x x x x x x x x 
+05| x x x x x x x x 
+04| x x x x x x x x 
+03| x x x x x x x x 
+02| x x x x x x x x 
+01| x x x x x x x x 
+00| x x x x x x x x 
+ *  ---------------->
 
 */
 
 
-const uint8_t  bitMask[9] = {0, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
-const uint8_t nbitMask[9] = {0, 0x7F, 0xBF, 0xDF, 0xEF, 0xF7, 0xFB, 0xFD, 0xFE};
+const uint8_t  bitMask[8] = {0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
+const uint8_t nbitMask[8] = {0x7F, 0xBF, 0xDF, 0xEF, 0xF7, 0xFB, 0xFD, 0xFE};
 
 uint8_t mainPaper[8];
 uint8_t scratchPaper[8];
@@ -68,9 +68,9 @@ inline void GUI_SetColor(int8_t col)
 void GUI_DrawPixel(int8_t x, int8_t y)
 {
     if(color == 0)
-        currentPaper[y-1] &= nbitMask[x];
+        currentPaper[y] &= nbitMask[x];
     else
-        currentPaper[y-1] |= bitMask[x];
+        currentPaper[y] |= bitMask[x];
 }
 
 /** Read a point.
@@ -80,7 +80,7 @@ void GUI_DrawPixel(int8_t x, int8_t y)
  */
 uint8_t GUI_ReadPixel(int8_t x, int8_t y)
 {
-    if((currentPaper[y-1] & bitMask[x]) == 0)
+    if((currentPaper[y] & bitMask[x]) == 0)
         return 0;
     else
         return 1;
@@ -112,7 +112,7 @@ void GUI_DrawRect(int8_t x0, int8_t y0, int8_t x1, int8_t y1)
         
     
     for(i=y0; i<=y1; i++)
-        currentPaper[i-1] |= drawMask;
+        currentPaper[i] |= drawMask;
 }
 
 /** Fills a rectangular area with the background color.

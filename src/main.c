@@ -37,27 +37,6 @@ enum
 	STA_GAMEOVER
 }MAIN_STATE
 
-enum
-{
-	TETRIS = 0,
-	SNAKE,
-	RAC,
-	SHOT,
-	Numbers_Of_Game
-}GameName;
-
-typedef struct
-{
-	uint8_t state;
-	void (*pGameInit)(void);
-	void (*pGamePlay)(void);
-	void (*pGameEnd)(void);
-	uint8_t preview[4][8];
-	uint8_t *pBGMusic;
-}GAME_T;
-
-GAME_T gamelist[Numbers_Of_Game];
-
 
 uint8 whichGame = 0;
 uint8 mainstate = STA_STARTUP;
@@ -115,7 +94,7 @@ void main()
 				break;		
 			
 			case STA_SELECTION_MENU:
-				GamePreview(&gamelist[].preview[][]);
+				Game_Preview(whichGame);
 				
 				if(whichGame != 0xff)
 				{
@@ -124,13 +103,13 @@ void main()
 				break;
 			
 			case STA_INITIALIZE_GAME:
-				gamelist[whichGame].pGameInit();
+				Game_Init(whichGame);
 				
 				mainstate = STA_PLAY_GAME;
 				break;
 				
 			case STA_PLAY_GAME:
-				gamelist[whichGame].pGamePlay();
+				Game_Play(whichGame);
 				
 				if(gamelist[whichGame].state == GAMEOVER)
 				{
@@ -139,7 +118,7 @@ void main()
 				break;
 			
 			case STA_GAMEOVER:
-				gamelist[whichGame].pGameEnd();
+				Game_End(whichGame);
 				
 				mainstate = STA_SELECTION_MENU;
 				break;
@@ -148,35 +127,7 @@ void main()
 	}
 }
 
-/**
-  * @brief  Register the games.
-  * @param  None.
-  * @retval None.
-  */
-void Register_Game(GameName name, void (*pGameInit)(), void (*pGamePlay)(), void (*pGameEnd)())
-{
-	
-}
 
-/**
-  * @brief  Register the game background music.
-  * @param  None.
-  * @retval None.
-  */
-void Register_Music(GameName name, uint8_t preview, uint8_t length)
-{
-	
-}
-
-/**
-  * @brief  Register the game preview frames.
-  * @param  None.
-  * @retval None.
-  */
-void Register_Preview(GameName name, uint8_t *preview)
-{
-	
-}
 
 /**
   * @brief  Hal timer callbock 1ms once.
@@ -187,18 +138,6 @@ void HAL_Timer_Callback()
 {
 	TimerUpdate();
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

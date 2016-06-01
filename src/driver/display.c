@@ -24,32 +24,16 @@
 */
 
 
-uint8 xbuff[16];
+uint8 *pBuffer;
 
-void clear(uint8 *buf)
+void setDisplayBuffer(uint8_t *buf)
 {
-	uint8 i;
-	for(i=0; i<16; i++)
-	{
-		buf[i] = 0;
-	}
+	pBuffer = buf;
 }
 
-void refresh()
-{
-	uint8 i;
-	for(i=0; i<16; i++)
-	{
-		xbuff[i] = imbuff[i];
-	}
-}
 
-void Tns(uint8 n)//������ʱ
-{
-	while(n--);
-}
 
-void Display_init()
+void DisplayInit()
 {
 	uint8 i;
 	for(i=0; i<16; i++)
@@ -64,7 +48,7 @@ void Display_init()
 	
 }
 
-void Select_Row(uint8 row)
+static void Select_Row(uint8 row)
 {
 	switch (row)
 	{
@@ -137,7 +121,7 @@ void Select_Row(uint8 row)
 	}
 }
 
-void Display_now() 
+void DisplayUpdate() 
 {
 	uint8 x,y,tmp;
 	for(y=0; y<16; y++)
@@ -223,6 +207,10 @@ void Display_now()
 	LED_ROW_A1_OFF;
 }
 
+void Tns(uint8 n)
+{
+	while(n--);
+}
 
 /*
 
