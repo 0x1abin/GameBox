@@ -41,10 +41,6 @@ void Register_Game(GameName name, GameObject *game_obj)
 
 
 
-
-
-
-
 void Game_Init(GameName name)
 {
     gamelist[name]->pGameInit();

@@ -67,10 +67,13 @@ inline void GUI_SetColor(int8_t col)
  */
 void GUI_DrawPixel(int8_t x, int8_t y)
 {
-    if(color == 0)
-        currentPaper[y] &= nbitMask[x];
-    else
-        currentPaper[y] |= bitMask[x];
+    if(x<8 || x>-1 || y<16 || y>-1)
+    {
+//        if(color == 0)
+//            currentPaper[y] &= nbitMask[x];
+//        else
+            currentPaper[y] |= bitMask[x];
+    }
 }
 
 /** Read a point.

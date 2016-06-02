@@ -28,8 +28,8 @@ enum
 {
     D_UP = 0,
     D_DOWN,
-    D_RIGHT,
-    D_LEFT
+    D_LEFT,
+    D_RIGHT
 }direction_t
 
 //scratch paper
