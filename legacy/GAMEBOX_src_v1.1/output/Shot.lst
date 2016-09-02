@@ -1,0 +1,127 @@
+C51 COMPILER V9.52.0.0   SHOT                                                              10/24/2014 23:17:56 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE SHOT
+OBJECT MODULE PLACED IN .\output\Shot.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE src\Shot.c LARGE BROWSE DEBUG OBJECTEXTEND PRINT(.\output\Shot.lst) OBJE
+                    -CT(.\output\Shot.obj)
+
+line level    source
+
+   1          #include "config.h"
+   2          
+   3          uint8 site;
+   4          uint8 bullet = 0;
+   5          uint8 aim_layer = 1;
+   6          uint8 plane[2];
+   7          uint8 block[16];
+   8          static void Shot_One();
+   9          
+  10          static void Shot_One()
+  11          {
+  12   1              if(bullet>15){
+  13   2                      bullet=1;
+  14   2                      return;
+  15   2              }
+  16   1              if(bitman[site] & block[bullet])
+  17   1              {
+  18   2                      block[bullet] &= (~bitman[site]);//消除被射击块
+  19   2                      bullet=1;
+  20   2                      scores++;
+  21   2      //              Sound_Tone(1,site+1,5);
+  22   2              }
+  23   1              else
+  24   1              {
+  25   2                      ++bullet;
+  26   2                      Sound_Tone(sound_ON,bullet,1);
+  27   2                      DisPoint(site,bullet);  //迭代产生弹道
+  28   2                      delayus(300);
+  29   2                      Shot_One();     //递归消除
+  30   2              }
+  31   1      }
+  32          
+  33          static void Block_Down()
+  34          {
+  35   1              uint8 i;
+  36   1              for(i=0;i<15;i++)
+  37   1              {
+  38   2                      block[i] = block[i+1];
+  39   2              }
+  40   1              block[15] = rand()%256;
+  41   1      }
+  42          static void Key_Control()
+  43          {
+  44   1              int8 k = Get_Kvuale(150);
+  45   1              switch (k)
+  46   1              {
+  47   2                      case K_LEFT: if(site < 7) site++;
+  48   2                              break;
+  49   2                      case K_RIGHT:if(site > 0) site--;
+  50   2                              break;
+  51   2                      case K_OK:      Shot_One();     return;
+  52   2                              break;
+  53   2                      default: break;
+  54   2              }
+C51 COMPILER V9.52.0.0   SHOT                                                              10/24/2014 23:17:56 PAGE 2   
+
+  55   1              if(!(tms%20)) if(!KEY_OK)       Shot_One();
+  56   1      }
+  57          
+  58          static void Shot_Game_Init()
+  59          {
+  60   1              uint8 i;
+  61   1              Glife=1;
+  62   1              site=3;
+  63   1              scores=0;
+  64   1              bullet=0;
+  65   1              speeds = 1000;
+  66   1              plane[1] = bitman[site];        //绘制飞机形状
+  67   1              plane[0] = plane[1]<<1 | plane[1] | plane[1]>>1;
+  68   1              
+  69   1              for(i=0;i<16;i++)       block[i]=0x00;  //清楚数据
+  70   1              block[15] = rand()%256; //先来一发
+  71   1      }
+  72          static void Shot_GameDisp()
+  73          {
+  74   1      //      Copier(DispRAM,block);
+  75   1              uint8 i;
+  76   1              for(i=0;i<16;i++)
+  77   1              {
+  78   2                      DispRAM[i] = block[i];
+  79   2              }
+  80   1              DispRAM[0] |= plane[0];
+  81   1              DispRAM[1] |= plane[1];
+  82   1              MatxDisp(DispRAM,duty);
+  83   1      }
+  84          void Shot_Game()
+  85          {
+  86   1              Shot_Game_Init();
+  87   1              while(Glife)
+  88   1              {
+  89   2                      Key_Control();
+  90   2                      plane[1] = bitman[site];
+  91   2                      plane[0] = plane[1]<<1 | plane[1] | plane[1]>>1;
+  92   2                      if(tms > (speeds-scores))
+  93   2                      {
+  94   3                              tms = 0;
+  95   3                              Block_Down();
+  96   3                              if(block[0] | (block[1]&plane[1]))      Glife=0;
+  97   3                      }
+  98   2                      Shot_GameDisp();
+  99   2                      SMG_Display(scores,duty);
+ 100   2              }
+ 101   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    457    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     21    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

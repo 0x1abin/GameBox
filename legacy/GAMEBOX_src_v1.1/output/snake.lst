@@ -1,0 +1,200 @@
+C51 COMPILER V9.52.0.0   SNAKE                                                             10/24/2014 23:17:56 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE SNAKE
+OBJECT MODULE PLACED IN .\output\snake.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE src\snake.c LARGE BROWSE DEBUG OBJECTEXTEND PRINT(.\output\snake.lst) OB
+                    -JECT(.\output\snake.obj)
+
+line level    source
+
+   1          /*
+   2                  2014-1-26 00:00:00      :完成贪吃蛇游戏模型
+   3                  2014-3-8 23:27:05       :增加游戏会随着吃的食物的增加而加快游戏速度
+   4                  2014-3-15 20:06:15      :进行实体硬件测剩，运行良好，但贪吃蛇结构设置太耗RAM，将进行优化。
+   5          */
+   6          #include "config.h"
+   7          
+   8          #define NORSPEED 360
+   9          #define ASPEED 100
+  10          #define WIDTH  8        //游戏屏幕宽度
+  11          #define LENGTH 16       //游戏屏幕长度 
+  12          
+  13          static struct Food
+  14          {
+  15              uint8 x;//食物的横坐标
+  16              uint8 y;//食物的纵坐标
+  17          }food;
+  18          
+  19          struct Snake snake;
+  20          
+  21          enum direc{up, down, left, right};//蛇的运动方向
+  22          
+  23          static void Snake_Init();               //初始化游戏
+  24          static void Snake_Disp();       //游戏显示
+  25          static void Snake_Run();                //蛇向前走一步
+  26          static void Create_Food();              //随机生成食物
+  27          
+  28          static void Create_Food()
+  29          {
+  30   1              uint8 i;
+  31   1              food.x = rand() % WIDTH;        //范围1-16;
+  32   1              food.y = rand() % LENGTH;       //获得随机数种子;//用计数器作为随机数发生器
+  33   1              for(i=1;i<(snake.node);i++)//检测产生的食物是否与蛇本身重叠
+  34   1              {
+  35   2                      if((food.x==snake.x[i])&&(food.y==snake.y[i]))
+  36   2                              Create_Food();  //重叠则重新成生 
+  37   2              }
+  38   1      }
+  39          
+  40          static void Snake_Init()
+  41          {       
+  42   1              uint8 c;        
+  43   1              for(c=0;c < MAX_SNAKE;c++)//清除内存数据
+  44   1              {
+  45   2                      snake.x[c]=-1;
+  46   2                      snake.y[c]=-1;
+  47   2              }
+  48   1              snake.life = 1;                         //赋予蛇生命
+  49   1              snake.node = 3;                 //默认长度3节
+  50   1              snake.direc = up;//初始方向
+  51   1              snake.x[0]=4;
+  52   1              snake.y[0]=5;
+  53   1              snake.x[1]=4;
+  54   1              snake.y[1]=4;
+C51 COMPILER V9.52.0.0   SNAKE                                                             10/24/2014 23:17:56 PAGE 2   
+
+  55   1              snake.x[2]=4;
+  56   1              snake.y[2]=3;
+  57   1              speeds = NORSPEED;      //游戏速度
+  58   1              tms = 0;
+  59   1              scores = 0;
+  60   1              Create_Food();          //生成第一个食物
+  61   1      }
+  62          
+  63          static void Snake_Run() //蛇爬行算法
+  64          {       
+  65   1              uint8 i;
+  66   1              for(i=(snake.node-1);i>0;i--)           //蛇头作为前进引导，长江后浪推前浪 
+  67   1              {
+  68   2                      snake.y[i]=snake.y[i-1];
+  69   2                      snake.x[i]=snake.x[i-1];
+  70   2              }
+  71   1              switch (snake.direc)    //根据蛇的方向标前进
+  72   1              {
+  73   2                      case up:        snake.y[0]+=1;  break;
+  74   2                      case down:      snake.y[0]-=1;  break;
+  75   2                      case left:      snake.x[0]-=1;  break;
+  76   2                      case right:     snake.x[0]+=1;  break;
+  77   2              }
+  78   1      }
+  79          
+  80          static void Snake_Disp()        //游戏画面显示
+  81          {
+  82   1              uint8 p = 16;
+  83   1      //      for(p=0;p<snake.node;p++)//绘制蛇图像
+  84   1      //      {               
+  85   1      //              delayus(500-duty);
+  86   1      //              DisPoint(snake.x[p],snake.y[p]);
+  87   1      //              delayus(duty/5);
+  88   1      //              cdata = 0xff;
+  89   1      //      }
+  90   1      //      DisPoint(food.x,food.y);//绘制食物图像
+  91   1      //      delayus(duty);
+  92   1      //      cdata = 0xff;
+  93   1      //      
+  94   1      //      for(i=0;i<16;i++)
+  95   1      //      {
+  96   1      //              DispRAM[i] = 0;
+  97   1      //      }
+  98   1              while(p--) DispRAM[p]=0;        //清除缓存      
+  99   1              for(p=0;p<snake.node;p++)       //写入新缓存
+ 100   1              {       
+ 101   2                      DispRAM[snake.y[p]] |= 0x80 >> (snake.x[p]);
+ 102   2              }
+ 103   1      //      DispRAM[food.y] |= 0x80 >> (food.x);
+ 104   1              
+ 105   1              MatxDisp(DispRAM,duty);
+ 106   1              DisPoint(7-food.x,food.y);
+ 107   1              delayus(duty);
+ 108   1      }
+ 109          
+ 110          void Snake_Game()       //游戏过程
+ 111          {
+ 112   1              Snake_Init();           //初始化游戏
+ 113   1              Play_Music(sound_canon);
+ 114   1              while(snake.life)       //有生命，便可玩
+ 115   1              {
+ 116   2                      uint8 i;
+C51 COMPILER V9.52.0.0   SNAKE                                                             10/24/2014 23:17:56 PAGE 3   
+
+ 117   2                      switch(keypad)//直接读取键值，贪吃蛇不需要消抖
+ 118   2                      {
+ 119   3                              case K_UP:      if((snake.direc==left)||(snake.direc==right))   snake.direc=up;
+ 120   3                                      //按下UP键时，只有蛇在水平方向时才能改变
+ 121   3                                      break;
+ 122   3                              case K_DOWN:if((snake.direc==left)||(snake.direc==right))       snake.direc=down;
+ 123   3                                      //按下DOWN键时，只有蛇在水平方向时才能改变
+ 124   3                                      break;
+ 125   3                              case K_LEFT:if((snake.direc==up)||(snake.direc==down))          snake.direc=left;
+ 126   3                                      //按下left键时，只有蛇在垂直方向时才能改变
+ 127   3                                      break;
+ 128   3                              case K_RIGHT:if((snake.direc==up)||(snake.direc==down))         snake.direc=right;
+ 129   3                                      //按下right键时，只有蛇在垂直方向时才能改变
+ 130   3                                      break;
+ 131   3                              default :
+ 132   3                                      break;
+ 133   3                      }
+ 134   2                      
+ 135   2                      if(KEY_OK==0) speeds = ASPEED;//加速键
+ 136   2                      else speeds = NORSPEED;
+ 137   2                      keypad = K_NULL;
+ 138   2                      
+ 139   2                      if(tms > speeds)        //半秒前进一格
+ 140   2                      {
+ 141   3                              tms=0;
+ 142   3                              Snake_Run();    //无聊散步
+ 143   3                      }
+ 144   2                      if((snake.x[0]==food.x) && (snake.y[0]==food.y))//是否吃到食物
+ 145   2                      {
+ 146   3                              Sound_Tone(sound_ON,4,5);
+ 147   3      //                      getfood=1;//直接在此增加蛇长度会在下一个显示扫描产生一个原有数据留影，故通过加长
+ 148   3                              snake.node++;
+ 149   3      //                      game_speed-=10; //每吃一个食物增加10点速度
+ 150   3                              Create_Food();  //产生新食物
+ 151   3                      }
+ 152   2                      if((snake.x[0]>WIDTH-1)||(snake.x[0]<0)||(snake.y[0]>LENGTH-1)||(snake.y[0]<0))//是否碰壁
+ 153   2                      {
+ 154   3                              snake.life=0;   //蛇碰到墙壁死亡
+ 155   3                      }
+ 156   2                      for(i=3;i<snake.node;i++)//从蛇的第四节开始判断是否撞到自己了，因为蛇头不可能撞到二三四节
+ 157   2                      {
+ 158   3                              if((snake.x[i]==snake.x[0])&&(snake.y[i]==snake.y[0]))//是否自残
+ 159   3                                      snake.life=0;   //蛇头碰到自身死亡
+ 160   3                      }
+ 161   2                      Snake_Disp();   //显示游戏图像
+ 162   2                      scores = snake.node-3;
+ 163   2                      SMG_Display(scores,duty);
+ 164   2              }
+ 165   1              scores = snake.node-3;
+ 166   1              TR2_OFF;
+ 167   1      }
+ 168          
+ 169          
+ 170          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    847    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    263       3
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+C51 COMPILER V9.52.0.0   SNAKE                                                             10/24/2014 23:17:56 PAGE 4   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,247 @@
+C51 COMPILER V9.52.0.0   GUI                                                               10/24/2014 23:17:55 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE GUI
+OBJECT MODULE PLACED IN .\output\GUI.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE src\GUI.c LARGE BROWSE DEBUG OBJECTEXTEND PRINT(.\output\GUI.lst) OBJECT
+                    -(.\output\GUI.obj)
+
+line level    source
+
+   1          #include "config.h"
+   2          
+   3          /****************游戏预览动画，共4帧**************************/
+   4          uint8 code tetris_mod[4][8]=
+   5          {
+   6                  {0x08,0x0C,0x08,0x00,0x00,0x91,0xB3,0xB7},
+   7                  {0x00,0x00,0x00,0x00,0x00,0x99,0xBF,0xBF},
+   8                  {0x60,0x40,0x40,0x00,0x00,0x99,0xBF,0xBF},
+   9                  {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xF9},
+  10          };
+  11          uint8 code snake_mod[4][8]=
+  12          {
+  13                  {0x00,0x00,0x00,0x00,0x00,0x00,0x2E,0x00},
+  14                  {0x00,0x00,0x00,0x00,0x00,0x00,0x3C,0x00},
+  15                  {0x20,0x00,0x00,0x20,0x20,0x20,0x30,0x00},
+  16                  {0x20,0x20,0x20,0x20,0x20,0x20,0x00,0x00},
+  17          };
+  18          uint8 code RAC_mod[4][8]=
+  19          {
+  20                  {0x8F,0x85,0x0A,0x81,0xA1,0x70,0xA1,0xD1},
+  21                  {0x00,0x85,0x8F,0x04,0xAB,0xF1,0x20,0xD1},
+  22                  {0x81,0x00,0x81,0x85,0x2E,0xF5,0xAB,0x50},
+  23                  {0x00,0x81,0x81,0x00,0xA1,0xF1,0x20,0xD1},
+  24          };
+  25          uint8 code shot_mod[4][8]=
+  26          {
+  27                  {0xBB,0xFB,0x00,0x00,0x00,0x00,0x04,0x0E},
+  28                  {0xF6,0xBB,0xFB,0x00,0x10,0x00,0x10,0x38},
+  29                  {0xF6,0xBB,0xEB,0x00,0x00,0x00,0x10,0x38},
+  30                  {0xCF,0xF6,0xBB,0xEB,0x00,0x00,0x10,0x38},
+  31          };
+  32          
+  33          
+  34          /***************************************************/
+  35          
+  36          
+  37          static void GUI_Light_ADJ()
+  38          {
+  39   1              uint8 i;
+  40   1              uint8 code light[2]={0x42,0x24};
+  41   1              uint8 code tu[2]={0x3c,0x24};
+  42   1              DispRAM[0]=tu[0];
+  43   1              DispRAM[1]=tu[1];
+  44   1              DispRAM[10]=tu[1];
+  45   1              DispRAM[11]=tu[0];
+  46   1              DispRAM[12]=0x00;
+  47   1              DispRAM[13]=0x00;
+  48   1              DispRAM[14]=light[0];
+  49   1              DispRAM[15]=light[1];
+  50   1              
+  51   1              for(i=2;i<10;i++){      //亮度条显示
+  52   2                      DispRAM[i] = ((i+1)>(duty/10) ? 0x00:0x18);
+  53   2              }
+  54   1      }
+C51 COMPILER V9.52.0.0   GUI                                                               10/24/2014 23:17:55 PAGE 2   
+
+  55          
+  56          static void GUI_Sound_SET()
+  57          {
+  58   1              code uint8 S_Logo[8]={0x00,0x19,0x2A,0xC8,0x8B,0xC8,0x2A,0x19};
+  59   1              code uint8 S_ON[8]={0x00,0x00,0x42,0x62,0x52,0x4A,0x46,0x42};/*ON*/
+  60   1              code uint8 S_OFF[8]={0x00,0x00,0x3C,0x20,0x20,0x3C,0x20,0x20};/*OFF*/
+  61   1              int8 i;
+  62   1              for(i=15;i>7;i--)
+  63   1                      DispRAM[i] = S_Logo[15-i];
+  64   1                      
+  65   1              if(sound_ON)
+  66   1              {
+  67   2                      for(i=7;i>-1;i--)
+  68   2                              DispRAM[i] = S_ON[7-i];
+  69   2              }
+  70   1              else
+  71   1              {
+  72   2                      for(i=7;i>-1;i--)
+  73   2                              DispRAM[i] = S_OFF[7-i];
+  74   2              }
+  75   1      }
+  76          
+  77          void Flash_Screen_Clear()//屏幕刷新动画
+  78          {
+  79   1              int8 i,p,n;
+  80   1              code uint8 bitman[8]={1,2,4,8,16,32,64,128};
+  81   1              for(p=0;p<8;p++)
+  82   1                      for(i=0;i<8;i++)
+  83   1                      {
+  84   2                              n=2;
+  85   2                              DispRAM[p] |= bitman[i];
+  86   2                              DispRAM[15-p] |= bitman[7-i];
+  87   2                              while(n--)      MatxDisp(DispRAM,duty);
+  88   2                      }
+  89   1              for(p=7;p>=0;p--)
+  90   1                      for(i=7;i>=0;i--)
+  91   1                      {
+  92   2                              n=2;
+  93   2                              DispRAM[p] &= ~bitman[i];
+  94   2                              DispRAM[15-p] &= ~bitman[7-i];
+  95   2                              while(n--)      MatxDisp(DispRAM,duty);
+  96   2                      }
+  97   1      }
+  98          
+  99          
+ 100          void GUI_Game_Preview(uint8 s, uint16 fps, uint8 (*mod)[8])
+ 101          {
+ 102   1              uint8 i = 0;
+ 103   1              if((tms/fps) > 3)       tms=0;//动画帧率控制
+ 104   1              while(i<8)
+ 105   1              {
+ 106   2                      DispRAM[i] = mod[tms/fps][7-i];//动画装载
+ 107   2                      i++;
+ 108   2              }
+ 109   1              for(i=0;i<5;i++)//游戏选择画面序号显示处理
+ 110   1              {
+ 111   2                      DispRAM[14-i] = (num[s][i]<<2);
+ 112   2              }
+ 113   1              DispRAM[15] = 0x00;
+ 114   1              DispRAM[9]      = 0x00;
+ 115   1              DispRAM[8]      = 0x00;
+ 116   1      }
+C51 COMPILER V9.52.0.0   GUI                                                               10/24/2014 23:17:55 PAGE 3   
+
+ 117          
+ 118          void GUI_Preview_Load(uint8 n)  //装载游戏预览动画数据
+ 119          {
+ 120   1              switch (n)
+ 121   1              {
+ 122   2                      case 1: GUI_Game_Preview(n,VIEW_FPS,tetris_mod);
+ 123   2                              break;
+ 124   2                      case 2: GUI_Game_Preview(n,VIEW_FPS,snake_mod);
+ 125   2                              break;
+ 126   2                      case 3: GUI_Game_Preview(n,VIEW_FPS,RAC_mod);
+ 127   2                              break;
+ 128   2                      case 4: GUI_Game_Preview(n,VIEW_FPS,shot_mod);
+ 129   2                              break;
+ 130   2                      case 5: GUI_Light_ADJ();
+ 131   2                              break;
+ 132   2                      case 6: GUI_Sound_SET();
+ 133   2                              break;
+ 134   2              }
+ 135   1      }
+ 136          
+ 137          //void Copier(uint8 *cpy,uint8 *dat)//数据拷贝，用于缓存当前数据
+ 138          //{
+ 139          //      while(*cpy++ = *dat++);//听说指针这样用看起来比较拽
+ 140          //}
+ 141          
+ 142          void GUI_ScreenTransl(uint8 n,uint8 xfps)//画面平移
+ 143          {
+ 144   1              static s_ls = 1;//用于左右移动判断
+ 145   1              uint8 i,j,b;
+ 146   1              uint8 tmpram[16];
+ 147   1              for(i=0;i<16;i++)
+ 148   1              {
+ 149   2                      tmpram[i] = DispRAM[i];//转移数据，用于平移画面做准备
+ 150   2              }
+ 151   1              GUI_Preview_Load(n);
+ 152   1              for(j=0;j<8;j++)
+ 153   1              {       
+ 154   2                      for(i=0;i<16;i++)
+ 155   2                      {
+ 156   3                              if(n < s_ls)//左移
+ 157   3                              {       
+ 158   4                                      if(DispRAM[i]&0x01)     b=0x80;
+ 159   4                                      else    b=0;
+ 160   4                                      tmpram[i]=(tmpram[i]>>1) | b;
+ 161   4                                      DispRAM[i] = DispRAM[i]>>1;
+ 162   4                              }
+ 163   3                              else            //右移
+ 164   3                              {
+ 165   4                                      if(DispRAM[i]&0x80)     b=1;
+ 166   4                                      else    b=0;
+ 167   4                                      tmpram[i]=(tmpram[i]<<1) | b;
+ 168   4                                      DispRAM[i]=DispRAM[i]<<1;
+ 169   4                              }
+ 170   3                      }
+ 171   2                      tms=0;
+ 172   2                      while(tms < xfps) MatxDisp(tmpram,duty);//画面平移速度
+ 173   2              }
+ 174   1              s_ls = n;//记忆当前序号，用于判断左或右移
+ 175   1              keypad = K_NULL;//平移动画过程需要时间，会与按键消抖时间产生BUG，出现按键连续触发现象，故消除一下按键状态
+             -消除BUG
+ 176   1      }
+ 177          
+C51 COMPILER V9.52.0.0   GUI                                                               10/24/2014 23:17:55 PAGE 4   
+
+ 178          uint8 GUI_Main()
+ 179          {
+ 180   1              static uint8 s = 1;
+ 181   1              uint8 k = K_NULL;
+ 182   1              while(1)
+ 183   1              {
+ 184   2                      switch (Get_Kvuale(150))
+ 185   2                      {
+ 186   3                              case K_NULL:    
+ 187   3                                      break;
+ 188   3                              case K_UP:      if(s==5) if(duty<100) duty+=10;
+ 189   3                                      break;
+ 190   3                              case K_DOWN:if(s==5) if(duty>=10) duty-=10;     
+ 191   3                                      break;
+ 192   3                              case K_LEFT:{if(s>1)
+ 193   4                                                      {
+ 194   5                                                              s--;
+ 195   5                                                              GUI_ScreenTransl(s,SMOVE_SPEED);
+ 196   5                                                      }}
+ 197   3                                      break;
+ 198   3                              case K_RIGHT:if(s<6)
+ 199   3                                                       {
+ 200   4                                                              s++;
+ 201   4                                                              GUI_ScreenTransl(s,SMOVE_SPEED);
+ 202   4                                                       }
+ 203   3                                      break;
+ 204   3                              case K_OK:      if(s==6)
+ 205   3                                                      {       
+ 206   4                                                              sound_ON = ~sound_ON;
+ 207   4                                                              Play_Music(sound_up);
+ 208   4                                                      }
+ 209   3                                                      else if(s<5) return s;//返回选择游戏的序号
+ 210   3                                      break;
+ 211   3                      }
+ 212   2                      
+ 213   2                      GUI_Preview_Load(s);
+ 214   2                      MatxDisp(DispRAM,duty);
+ 215   2              }//while
+ 216   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1268    ----
+   CONSTANT SIZE    =    164    ----
+   XDATA SIZE       =      3      33
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,13 @@
+".\output\STARTUP.obj",
+".\output\Delay.obj",
+".\output\Display_Drives.obj",
+".\output\GUI.obj",
+".\output\Main.obj",
+".\output\RAC.obj",
+".\output\Shot.obj",
+".\output\snake.obj",
+".\output\Sound_Drives.obj",
+".\output\Tetris.obj",
+".\output\Sound_date.obj" 
+TO ".\output\Gamebox" 
+PRINT(".\output\Gamebox.m51") RAMSIZE(256) 

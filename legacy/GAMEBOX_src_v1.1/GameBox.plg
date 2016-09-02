@@ -1,0 +1,1129 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Administrator\Desktop\GAMEBOX\GameBox.uvproj
+Project File Date:  07/31/2014
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+src\LED_Drives.c(7): error C231: '_ROW_data': redefinition
+src\LED_Drives.c(31): error C231: '_ROW_data': redefinition
+src\LED_Drives.c(34): error C231: '_DisPoint': redefinition
+src\LED_Drives.c(48): error C231: '_DisPoint': redefinition
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+compiling Main.c...
+src\delay.h(2): warning C315: unknown #directive 'defind'
+src\Main.c(22): error C202: 'NORSPEED': undefined identifier
+compiling Delay.c...
+src\delay.h(2): warning C315: unknown #directive 'defind'
+src\delay.h(4): error C141: syntax error near 'n', expected ')'
+src\delay.h(5): error C141: syntax error near 'n', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+src\LED_Drives.c(7): error C231: '_ROW_data': redefinition
+src\LED_Drives.c(31): error C231: '_ROW_data': redefinition
+src\LED_Drives.c(34): error C231: '_DisPoint': redefinition
+src\LED_Drives.c(48): error C231: '_DisPoint': redefinition
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+compiling Main.c...
+src\delay.h(2): warning C315: unknown #directive 'defind'
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(2): warning C315: unknown #directive 'defind'
+src\delay.h(4): error C141: syntax error near 'n', expected ')'
+src\delay.h(5): error C141: syntax error near 'n', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+src\LED_Drives.c(7): error C231: '_ROW_data': redefinition
+src\LED_Drives.c(31): error C231: '_ROW_data': redefinition
+src\LED_Drives.c(34): error C231: '_DisPoint': redefinition
+src\LED_Drives.c(48): error C231: '_DisPoint': redefinition
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'n', expected ')'
+src\delay.h(5): error C141: syntax error near 'n', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'n', expected ')'
+src\delay.h(5): error C141: syntax error near 'n', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'n', expected ')'
+src\delay.h(5): error C141: syntax error near 'n', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(23): error C129: missing ';' before 'typedef'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(23): error C129: missing ';' before 'typedef'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(33): error C129: missing ';' before 'extern'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(33): error C129: missing ';' before 'extern'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+compiling Main.c...
+C:\Keil\C51\Inc\stdio.h(27): error C129: missing ';' before 'extern'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\Main.c(11): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+C:\Keil\C51\Inc\stdlib.h(14): error C129: missing ';' before 'typedef'
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+compiling Main.c...
+src\Main.c(12): error C129: missing ';' before 'sbit'
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(216): warning C206: 'delayus': missing function-prototype
+src\Tetris.c(216): error C267: 'delayus': requires ANSI-style prototype
+src\Tetris.c(241): error C202: 'tms': undefined identifier
+src\Tetris.c(244): error C202: 'tms': undefined identifier
+src\Tetris.c(258): error C202: 'scores': undefined identifier
+src\Tetris.c(263): error C202: 'exintc': undefined identifier
+src\Tetris.c(265): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(266): error C202: 'speeds': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(269): error C202: 'keypad': undefined identifier
+src\Tetris.c(280): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(284): error C202: 'keypad': undefined identifier
+src\Tetris.c(288): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(292): error C202: 'keypad': undefined identifier
+src\Tetris.c(296): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(299): error C202: 'keypad': undefined identifier
+src\Tetris.c(310): error C202: 'scores': undefined identifier
+src\Tetris.c(313): error C202: 'Glife': undefined identifier
+src\Tetris.c(315): error C202: 'exintc': undefined identifier
+src\Tetris.c(318): error C202: 'tms': undefined identifier
+src\Tetris.c(320): error C202: 'tms': undefined identifier
+src\Tetris.c(337): error C202: 'Glife': undefined identifier
+compiling Main.c...
+src\Main.c(23): error C202: 'NORSPEED': undefined identifier
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(216): warning C206: 'delayus': missing function-prototype
+src\Tetris.c(216): error C267: 'delayus': requires ANSI-style prototype
+src\Tetris.c(241): error C202: 'tms': undefined identifier
+src\Tetris.c(244): error C202: 'tms': undefined identifier
+src\Tetris.c(258): error C202: 'scores': undefined identifier
+src\Tetris.c(263): error C202: 'exintc': undefined identifier
+src\Tetris.c(265): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(266): error C202: 'speeds': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(269): error C202: 'keypad': undefined identifier
+src\Tetris.c(280): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(284): error C202: 'keypad': undefined identifier
+src\Tetris.c(288): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(292): error C202: 'keypad': undefined identifier
+src\Tetris.c(296): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(299): error C202: 'keypad': undefined identifier
+src\Tetris.c(310): error C202: 'scores': undefined identifier
+src\Tetris.c(313): error C202: 'Glife': undefined identifier
+src\Tetris.c(315): error C202: 'exintc': undefined identifier
+src\Tetris.c(318): error C202: 'tms': undefined identifier
+src\Tetris.c(320): error C202: 'tms': undefined identifier
+src\Tetris.c(337): error C202: 'Glife': undefined identifier
+compiling Main.c...
+src\Main.c(23): error C202: 'NORSPEED': undefined identifier
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(216): warning C206: 'delayus': missing function-prototype
+src\Tetris.c(216): error C267: 'delayus': requires ANSI-style prototype
+src\Tetris.c(241): error C202: 'tms': undefined identifier
+src\Tetris.c(244): error C202: 'tms': undefined identifier
+src\Tetris.c(258): error C202: 'scores': undefined identifier
+src\Tetris.c(263): error C202: 'exintc': undefined identifier
+src\Tetris.c(265): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(266): error C202: 'speeds': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(269): error C202: 'keypad': undefined identifier
+src\Tetris.c(280): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(284): error C202: 'keypad': undefined identifier
+src\Tetris.c(288): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(292): error C202: 'keypad': undefined identifier
+src\Tetris.c(296): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(299): error C202: 'keypad': undefined identifier
+src\Tetris.c(310): error C202: 'scores': undefined identifier
+src\Tetris.c(313): error C202: 'Glife': undefined identifier
+src\Tetris.c(315): error C202: 'exintc': undefined identifier
+src\Tetris.c(318): error C202: 'tms': undefined identifier
+src\Tetris.c(320): error C202: 'tms': undefined identifier
+src\Tetris.c(337): error C202: 'Glife': undefined identifier
+compiling Main.c...
+src\Main.c(23): error C202: 'NORSPEED': undefined identifier
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(216): warning C206: 'delayus': missing function-prototype
+src\Tetris.c(216): error C267: 'delayus': requires ANSI-style prototype
+src\Tetris.c(241): error C202: 'tms': undefined identifier
+src\Tetris.c(244): error C202: 'tms': undefined identifier
+src\Tetris.c(258): error C202: 'scores': undefined identifier
+src\Tetris.c(263): error C202: 'exintc': undefined identifier
+src\Tetris.c(265): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(266): error C202: 'speeds': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(269): error C202: 'keypad': undefined identifier
+src\Tetris.c(280): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(284): error C202: 'keypad': undefined identifier
+src\Tetris.c(288): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(292): error C202: 'keypad': undefined identifier
+src\Tetris.c(296): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(299): error C202: 'keypad': undefined identifier
+src\Tetris.c(310): error C202: 'scores': undefined identifier
+src\Tetris.c(313): error C202: 'Glife': undefined identifier
+src\Tetris.c(315): error C202: 'exintc': undefined identifier
+src\Tetris.c(318): error C202: 'tms': undefined identifier
+src\Tetris.c(320): error C202: 'tms': undefined identifier
+src\Tetris.c(337): error C202: 'Glife': undefined identifier
+compiling Main.c...
+src\Main.c(23): error C202: 'NORSPEED': undefined identifier
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(216): warning C206: 'delayus': missing function-prototype
+src\Tetris.c(216): error C267: 'delayus': requires ANSI-style prototype
+src\Tetris.c(241): error C202: 'tms': undefined identifier
+src\Tetris.c(244): error C202: 'tms': undefined identifier
+src\Tetris.c(258): error C202: 'scores': undefined identifier
+src\Tetris.c(263): error C202: 'exintc': undefined identifier
+src\Tetris.c(265): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(266): error C202: 'speeds': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(269): error C202: 'keypad': undefined identifier
+src\Tetris.c(280): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(284): error C202: 'keypad': undefined identifier
+src\Tetris.c(288): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(292): error C202: 'keypad': undefined identifier
+src\Tetris.c(296): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(299): error C202: 'keypad': undefined identifier
+src\Tetris.c(310): error C202: 'scores': undefined identifier
+src\Tetris.c(313): error C202: 'Glife': undefined identifier
+src\Tetris.c(315): error C202: 'exintc': undefined identifier
+src\Tetris.c(318): error C202: 'tms': undefined identifier
+src\Tetris.c(320): error C202: 'tms': undefined identifier
+src\Tetris.c(337): error C202: 'Glife': undefined identifier
+compiling Main.c...
+src\Main.c(23): error C202: 'NORSPEED': undefined identifier
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(216): warning C206: 'delayus': missing function-prototype
+src\Tetris.c(216): error C267: 'delayus': requires ANSI-style prototype
+src\Tetris.c(241): error C202: 'tms': undefined identifier
+src\Tetris.c(244): error C202: 'tms': undefined identifier
+src\Tetris.c(258): error C202: 'scores': undefined identifier
+src\Tetris.c(263): error C202: 'exintc': undefined identifier
+src\Tetris.c(265): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(266): error C202: 'speeds': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(269): error C202: 'keypad': undefined identifier
+src\Tetris.c(280): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(284): error C202: 'keypad': undefined identifier
+src\Tetris.c(288): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(292): error C202: 'keypad': undefined identifier
+src\Tetris.c(296): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(299): error C202: 'keypad': undefined identifier
+src\Tetris.c(310): error C202: 'scores': undefined identifier
+src\Tetris.c(313): error C202: 'Glife': undefined identifier
+src\Tetris.c(315): error C202: 'exintc': undefined identifier
+src\Tetris.c(318): error C202: 'tms': undefined identifier
+src\Tetris.c(320): error C202: 'tms': undefined identifier
+src\Tetris.c(337): error C202: 'Glife': undefined identifier
+compiling Main.c...
+src\Main.c(23): error C202: 'NORSPEED': undefined identifier
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(216): warning C206: 'delayus': missing function-prototype
+src\Tetris.c(216): error C267: 'delayus': requires ANSI-style prototype
+src\Tetris.c(241): error C202: 'tms': undefined identifier
+src\Tetris.c(244): error C202: 'tms': undefined identifier
+src\Tetris.c(258): error C202: 'scores': undefined identifier
+src\Tetris.c(263): error C202: 'exintc': undefined identifier
+src\Tetris.c(265): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(266): error C202: 'speeds': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(269): error C202: 'keypad': undefined identifier
+src\Tetris.c(280): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(284): error C202: 'keypad': undefined identifier
+src\Tetris.c(288): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(292): error C202: 'keypad': undefined identifier
+src\Tetris.c(296): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(299): error C202: 'keypad': undefined identifier
+src\Tetris.c(310): error C202: 'scores': undefined identifier
+src\Tetris.c(313): error C202: 'Glife': undefined identifier
+src\Tetris.c(315): error C202: 'exintc': undefined identifier
+src\Tetris.c(318): error C202: 'tms': undefined identifier
+src\Tetris.c(320): error C202: 'tms': undefined identifier
+src\Tetris.c(337): error C202: 'Glife': undefined identifier
+compiling Main.c...
+src\Main.c(23): error C202: 'NORSPEED': undefined identifier
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Tetris.c...
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(216): warning C206: 'delayus': missing function-prototype
+src\Tetris.c(216): error C267: 'delayus': requires ANSI-style prototype
+src\Tetris.c(241): error C202: 'tms': undefined identifier
+src\Tetris.c(244): error C202: 'tms': undefined identifier
+src\Tetris.c(258): error C202: 'scores': undefined identifier
+src\Tetris.c(263): error C202: 'exintc': undefined identifier
+src\Tetris.c(265): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(266): error C202: 'speeds': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(269): error C202: 'keypad': undefined identifier
+src\Tetris.c(280): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(284): error C202: 'keypad': undefined identifier
+src\Tetris.c(288): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(292): error C202: 'keypad': undefined identifier
+src\Tetris.c(296): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(299): error C202: 'keypad': undefined identifier
+src\Tetris.c(310): error C202: 'scores': undefined identifier
+src\Tetris.c(313): error C202: 'Glife': undefined identifier
+src\Tetris.c(315): error C202: 'exintc': undefined identifier
+src\Tetris.c(318): error C202: 'tms': undefined identifier
+src\Tetris.c(320): error C202: 'tms': undefined identifier
+src\Tetris.c(337): error C202: 'Glife': undefined identifier
+compiling Main.c...
+src\Main.c(23): error C202: 'NORSPEED': undefined identifier
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(23): error C202: 'NORSPEED': undefined identifier
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(126): warning C206: 'srand': missing function-prototype
+src\Main.c(126): error C267: 'srand': requires ANSI-style prototype
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+src\delay.h(4): error C141: syntax error near 'nx', expected ')'
+src\delay.h(5): error C141: syntax error near 'nx', expected ')'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+src\Delay.c(34): error C202: 'n': undefined identifier
+src\Delay.c(38): error C202: 'n': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+src\Delay.c(34): error C202: 'n': undefined identifier
+src\Delay.c(38): error C202: 'n': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+src\Delay.c(34): error C202: 'n': undefined identifier
+src\Delay.c(38): error C202: 'n': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPOINT?LED_DRIVES
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INIT_MCU?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYUS?DELAY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYMS?DELAY
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GAMEPLAY
+    MODULE:  .\output\Main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  INIT
+    MODULE:  .\output\Main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  INIT
+    MODULE:  .\output\Main.obj (MAIN)
+    ADDRESS: 005FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GAMEPLAY
+    MODULE:  .\output\Main.obj (MAIN)
+    ADDRESS: 0069H
+Program Size: data=24.1 xdata=0 code=1396
+creating hex file from ".\output\GameBox"...
+".\output\GameBox" - 0 Error(s), 10 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPOINT?LED_DRIVES
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INIT_MCU?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYUS?DELAY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYMS?DELAY
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GAMEPLAY
+    MODULE:  .\output\Main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  INIT
+    MODULE:  .\output\Main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  INIT
+    MODULE:  .\output\Main.obj (MAIN)
+    ADDRESS: 005FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GAMEPLAY
+    MODULE:  .\output\Main.obj (MAIN)
+    ADDRESS: 0069H
+Program Size: data=24.1 xdata=0 code=1396
+creating hex file from ".\output\GameBox"...
+".\output\GameBox" - 0 Error(s), 10 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPOINT?LED_DRIVES
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INIT_MCU?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYUS?DELAY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYMS?DELAY
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GAMEPLAY
+    MODULE:  .\output\Main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  INIT
+    MODULE:  .\output\Main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  INIT
+    MODULE:  .\output\Main.obj (MAIN)
+    ADDRESS: 005FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GAMEPLAY
+    MODULE:  .\output\Main.obj (MAIN)
+    ADDRESS: 0069H
+Program Size: data=24.1 xdata=0 code=1396
+creating hex file from ".\output\GameBox"...
+".\output\GameBox" - 0 Error(s), 10 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPOINT?LED_DRIVES
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INIT_MCU?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYUS?DELAY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYMS?DELAY
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GAMEPLAY
+    MODULE:  .\output\Main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  INIT
+    MODULE:  .\output\Main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  INIT
+    MODULE:  .\output\Main.obj (MAIN)
+    ADDRESS: 005FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GAMEPLAY
+    MODULE:  .\output\Main.obj (MAIN)
+    ADDRESS: 0069H
+Program Size: data=24.1 xdata=0 code=1396
+creating hex file from ".\output\GameBox"...
+".\output\GameBox" - 0 Error(s), 10 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+src\LED_Drives.h(8): error C141: syntax error near 'rdata', expected ')'
+src\LED_Drives.h(9): error C141: syntax error near 'x', expected ')'
+src\LED_Drives.c(35): error C236: '_DisPoint': different length of parameter lists
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPOINT?LED_DRIVES
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INIT_MCU?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYUS?DELAY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYMS?DELAY
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GAMEPLAY
+    MODULE:  .\output\Main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  INIT
+    MODULE:  .\output\Main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  INIT
+    MODULE:  .\output\Main.obj (MAIN)
+    ADDRESS: 005FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GAMEPLAY
+    MODULE:  .\output\Main.obj (MAIN)
+    ADDRESS: 0069H
+Program Size: data=24.1 xdata=0 code=1396
+creating hex file from ".\output\GameBox"...
+".\output\GameBox" - 0 Error(s), 10 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPOINT?LED_DRIVES
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INIT_MCU?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYUS?DELAY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAYMS?DELAY
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GAMEPLAY
+    MODULE:  .\output\Main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  INIT
+    MODULE:  .\output\Main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  INIT
+    MODULE:  .\output\Main.obj (MAIN)
+    ADDRESS: 005FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GAMEPLAY
+    MODULE:  .\output\Main.obj (MAIN)
+    ADDRESS: 0069H
+Program Size: data=24.1 xdata=0 code=1396
+creating hex file from ".\output\GameBox"...
+".\output\GameBox" - 0 Error(s), 10 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+compiling Tetris.c...
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(216): warning C206: 'delayus': missing function-prototype
+src\Tetris.c(216): error C267: 'delayus': requires ANSI-style prototype
+src\Tetris.c(241): error C202: 'tms': undefined identifier
+src\Tetris.c(244): error C202: 'tms': undefined identifier
+src\Tetris.c(258): error C202: 'scores': undefined identifier
+src\Tetris.c(263): error C202: 'exintc': undefined identifier
+src\Tetris.c(265): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(266): error C202: 'speeds': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(269): error C202: 'keypad': undefined identifier
+src\Tetris.c(280): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(284): error C202: 'keypad': undefined identifier
+src\Tetris.c(288): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(292): error C202: 'keypad': undefined identifier
+src\Tetris.c(296): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(299): error C202: 'keypad': undefined identifier
+src\Tetris.c(310): error C202: 'scores': undefined identifier
+src\Tetris.c(313): error C202: 'Glife': undefined identifier
+src\Tetris.c(315): error C202: 'exintc': undefined identifier
+src\Tetris.c(318): error C202: 'tms': undefined identifier
+src\Tetris.c(320): error C202: 'tms': undefined identifier
+src\Tetris.c(337): error C202: 'Glife': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+compiling Tetris.c...
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(216): warning C206: 'delayus': missing function-prototype
+src\Tetris.c(216): error C267: 'delayus': requires ANSI-style prototype
+src\Tetris.c(241): error C202: 'tms': undefined identifier
+src\Tetris.c(244): error C202: 'tms': undefined identifier
+src\Tetris.c(258): error C202: 'scores': undefined identifier
+src\Tetris.c(263): error C202: 'exintc': undefined identifier
+src\Tetris.c(265): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(266): error C202: 'speeds': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(269): error C202: 'keypad': undefined identifier
+src\Tetris.c(280): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(284): error C202: 'keypad': undefined identifier
+src\Tetris.c(288): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(292): error C202: 'keypad': undefined identifier
+src\Tetris.c(296): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(299): error C202: 'keypad': undefined identifier
+src\Tetris.c(310): error C202: 'scores': undefined identifier
+src\Tetris.c(313): error C202: 'Glife': undefined identifier
+src\Tetris.c(315): error C202: 'exintc': undefined identifier
+src\Tetris.c(318): error C202: 'tms': undefined identifier
+src\Tetris.c(320): error C202: 'tms': undefined identifier
+src\Tetris.c(337): error C202: 'Glife': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+compiling Tetris.c...
+src\Tetris.c(16): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(216): warning C206: 'delayus': missing function-prototype
+src\Tetris.c(216): error C267: 'delayus': requires ANSI-style prototype
+src\Tetris.c(241): error C202: 'tms': undefined identifier
+src\Tetris.c(244): error C202: 'tms': undefined identifier
+src\Tetris.c(258): error C202: 'scores': undefined identifier
+src\Tetris.c(263): error C202: 'exintc': undefined identifier
+src\Tetris.c(265): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(266): error C202: 'speeds': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(269): error C202: 'keypad': undefined identifier
+src\Tetris.c(280): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(284): error C202: 'keypad': undefined identifier
+src\Tetris.c(288): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(292): error C202: 'keypad': undefined identifier
+src\Tetris.c(296): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(299): error C202: 'keypad': undefined identifier
+src\Tetris.c(310): error C202: 'scores': undefined identifier
+src\Tetris.c(313): error C202: 'Glife': undefined identifier
+src\Tetris.c(315): error C202: 'exintc': undefined identifier
+src\Tetris.c(318): error C202: 'tms': undefined identifier
+src\Tetris.c(320): error C202: 'tms': undefined identifier
+src\Tetris.c(337): error C202: 'Glife': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+compiling Tetris.c...
+src\Tetris.c(17): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(242): error C202: 'tms': undefined identifier
+src\Tetris.c(245): error C202: 'tms': undefined identifier
+src\Tetris.c(259): error C202: 'scores': undefined identifier
+src\Tetris.c(264): error C202: 'exintc': undefined identifier
+src\Tetris.c(266): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(268): error C202: 'speeds': undefined identifier
+src\Tetris.c(270): error C202: 'keypad': undefined identifier
+src\Tetris.c(281): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(285): error C202: 'keypad': undefined identifier
+src\Tetris.c(289): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(293): error C202: 'keypad': undefined identifier
+src\Tetris.c(297): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(300): error C202: 'keypad': undefined identifier
+src\Tetris.c(311): error C202: 'scores': undefined identifier
+src\Tetris.c(314): error C202: 'Glife': undefined identifier
+src\Tetris.c(316): error C202: 'exintc': undefined identifier
+src\Tetris.c(319): error C202: 'tms': undefined identifier
+src\Tetris.c(321): error C202: 'tms': undefined identifier
+src\Tetris.c(338): error C202: 'Glife': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+compiling Tetris.c...
+src\Tetris.c(17): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(242): error C202: 'tms': undefined identifier
+src\Tetris.c(245): error C202: 'tms': undefined identifier
+src\Tetris.c(259): error C202: 'scores': undefined identifier
+src\Tetris.c(264): error C202: 'exintc': undefined identifier
+src\Tetris.c(266): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(268): error C202: 'speeds': undefined identifier
+src\Tetris.c(270): error C202: 'keypad': undefined identifier
+src\Tetris.c(281): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(285): error C202: 'keypad': undefined identifier
+src\Tetris.c(289): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(293): error C202: 'keypad': undefined identifier
+src\Tetris.c(297): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(300): error C202: 'keypad': undefined identifier
+src\Tetris.c(311): error C202: 'scores': undefined identifier
+src\Tetris.c(314): error C202: 'Glife': undefined identifier
+src\Tetris.c(316): error C202: 'exintc': undefined identifier
+src\Tetris.c(319): error C202: 'tms': undefined identifier
+src\Tetris.c(321): error C202: 'tms': undefined identifier
+src\Tetris.c(338): error C202: 'Glife': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+compiling Tetris.c...
+src\Tetris.c(17): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(242): error C202: 'tms': undefined identifier
+src\Tetris.c(245): error C202: 'tms': undefined identifier
+src\Tetris.c(259): error C202: 'scores': undefined identifier
+src\Tetris.c(264): error C202: 'exintc': undefined identifier
+src\Tetris.c(266): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(268): error C202: 'speeds': undefined identifier
+src\Tetris.c(270): error C202: 'keypad': undefined identifier
+src\Tetris.c(281): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(285): error C202: 'keypad': undefined identifier
+src\Tetris.c(289): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(293): error C202: 'keypad': undefined identifier
+src\Tetris.c(297): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(300): error C202: 'keypad': undefined identifier
+src\Tetris.c(311): error C202: 'scores': undefined identifier
+src\Tetris.c(314): error C202: 'Glife': undefined identifier
+src\Tetris.c(316): error C202: 'exintc': undefined identifier
+src\Tetris.c(319): error C202: 'tms': undefined identifier
+src\Tetris.c(321): error C202: 'tms': undefined identifier
+src\Tetris.c(338): error C202: 'Glife': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling LED_Drives.c...
+compiling Main.c...
+src\Main.c(125): warning C206: 'Init': missing function-prototype
+src\Main.c(131): warning C206: 'GamePlay': missing function-prototype
+compiling Delay.c...
+compiling Tetris.c...
+src\Tetris.c(17): warning C317: attempt to redefine macro 'unsigned'
+src\Tetris.c(242): error C202: 'tms': undefined identifier
+src\Tetris.c(245): error C202: 'tms': undefined identifier
+src\Tetris.c(259): error C202: 'scores': undefined identifier
+src\Tetris.c(264): error C202: 'exintc': undefined identifier
+src\Tetris.c(266): error C202: 'KEY_DOWN': undefined identifier
+src\Tetris.c(267): error C202: 'speeds': undefined identifier
+src\Tetris.c(268): error C202: 'speeds': undefined identifier
+src\Tetris.c(270): error C202: 'keypad': undefined identifier
+src\Tetris.c(281): error C202: 'KEY_LEFT': undefined identifier
+src\Tetris.c(285): error C202: 'keypad': undefined identifier
+src\Tetris.c(289): error C202: 'KEY_RIGHT': undefined identifier
+src\Tetris.c(293): error C202: 'keypad': undefined identifier
+src\Tetris.c(297): error C202: 'KEY_MENU': undefined identifier
+src\Tetris.c(300): error C202: 'keypad': undefined identifier
+src\Tetris.c(311): error C202: 'scores': undefined identifier
+src\Tetris.c(314): error C202: 'Glife': undefined identifier
+src\Tetris.c(316): error C202: 'exintc': undefined identifier
+src\Tetris.c(319): error C202: 'tms': undefined identifier
+src\Tetris.c(321): error C202: 'tms': undefined identifier
+src\Tetris.c(338): error C202: 'Glife': undefined identifier
+Target not created

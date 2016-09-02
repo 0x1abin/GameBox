@@ -1,0 +1,123 @@
+C51 COMPILER V9.52.0.0   RAC                                                               10/24/2014 23:17:56 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE RAC
+OBJECT MODULE PLACED IN .\output\RAC.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE src\RAC.c LARGE BROWSE DEBUG OBJECTEXTEND PRINT(.\output\RAC.lst) OBJECT
+                    -(.\output\RAC.obj)
+
+line level    source
+
+   1          #include "config.h"
+   2          
+   3          #define ASPEED 28       //按加速键后的速度
+   4          uint8 ucar=1;           //你的车，1靠右，2靠左
+   5          
+   6          static void keyscan()
+   7          {
+   8   1              static bit r = 0;
+   9   1              int8 k = Get_Kvuale(30);
+  10   1              if(KEY_OK==0) {
+  11   2                      speeds = ASPEED;
+  12   2                      if(!sound_cnt_time | r) Sound_Tone(sound_ON,6,255);
+  13   2                      r=0;
+  14   2              }
+  15   1              else{   //随着分数的增加， 游戏速度逐渐加快
+  16   2                      speeds = 200 - scores/10;
+  17   2                      if(!sound_cnt_time | !r) Sound_Tone(sound_ON,1,255);
+  18   2                      r=1;
+  19   2              }
+  20   1              if(k==K_LEFT)   ucar=1;
+  21   1              if(k==K_RIGHT)  ucar=2;
+  22   1      }
+  23          void RAC_Game()
+  24          {       
+  25   1              int8 xcar[4][2]={0};    //[2] 0:左/右/无;    1:车的Y轴位置
+  26   1              uint8 code carport[3][4]={{0,0,0,0},{0x50,0x20,0x70,0x20},{0x0a,0x04,0x0e,0x04}};
+  27   1              uint8 code track[5]={0x81,0x81,0x81,0x00,0x00};
+  28   1              uint8 carid=0,lastid=0,stp=0;
+  29   1              uint8 p,i;
+  30   1              Glife=1;
+  31   1              speeds = 200;
+  32   1              scores = 0;
+  33   1              for(i=0;i<4;i++){
+  34   2                      xcar[i][1]=i*5;//其它赛车之间间隔控制,重要部分!
+  35   2                      xcar[i][0]=0;
+  36   2              }       
+  37   1              /******************初始化完成,开始游戏***********************/
+  38   1              while(Glife){   
+  39   2      //              分层扫描,将画面两边的赛道和赛车分为两次扫描，使跑道跟赛车产生画面对�
+             -�度
+  40   2      //              uint8 xtmp[16];
+  41   2      //              for(p=0;p<16;p++)//刷新跑道
+  42   2      //                      DispRAM[p]=track[(p+stp)%5];//动态跑道算法
+  43   2      //              for(p=0;p<16;p++){
+  44   2      //                      xtmp[p]=0x00;
+  45   2      //                      for(i=0;i<4;i++)        //刷新其他赛车
+  46   2      //                              if((0<=(p-xcar[i][1])) && (p-xcar[i][1])<4)     
+  47   2      //                                      xtmp[p] = carport[xcar[i][0]][p-(xcar[i][1])];
+  48   2      //                      if(p<4)
+  49   2      //                              if(xtmp[p] & carport[ucar][p])//判断你的赛车是否与其它赛车碰撞
+  50   2      //                                      Glife=0;
+  51   2      //                              else
+  52   2      //                                      xtmp[p] |= carport[ucar][p];
+  53   2      //              }
+C51 COMPILER V9.52.0.0   RAC                                                               10/24/2014 23:17:56 PAGE 2   
+
+  54   2                      
+  55   2                      //同步扫描
+  56   2                      for(p=0;p<16;p++)//刷新跑道
+  57   2                      {
+  58   3                              DispRAM[p]=0x00;
+  59   3                              DispRAM[p]=track[(p+stp)%5];//动态跑道算法
+  60   3                              
+  61   3                              for(i=0;i<4;i++)//刷新其他赛车
+  62   3                                      if((0<=(p-xcar[i][1])) && (p-xcar[i][1])<4)     
+  63   3                                              DispRAM[p] |= carport[xcar[i][0]][p-(xcar[i][1])];
+  64   3                              if(p<4)
+  65   3                              {
+  66   4                                      if(DispRAM[p] & carport[ucar][p])//判断你的赛车是否与其它赛车碰撞
+  67   4                                              Glife=0;
+  68   4                                      else    DispRAM[p] |= carport[ucar][p];
+  69   4                              }
+  70   3                      }
+  71   2                      if(tms > speeds)//游戏速度节拍
+  72   2                      {       
+  73   3                              stp++;
+  74   3                              if(stp==5) stp=0;//跑道动态算法标记位
+  75   3                              for(i=0;i<4;i++)
+  76   3                              {
+  77   4                                      xcar[i][1]--;   //其他车跟随跑道下移
+  78   4                                      if(xcar[i][1]== -4){
+  79   5                                              xcar[i][1]=15;
+  80   5                                              if(lastid>0)    //游戏规则,如果上次产生的不是空车位,则这一次产生一个空车位
+  81   5                                                      carid=0;
+  82   5                                              else 
+  83   5                                                      carid=rand()%3;//随机产生一辆车
+  84   5                                              lastid = carid;
+  85   5                                              xcar[i][0]=carid;
+  86   5                                              scores ++;
+  87   5                                      }
+  88   4                              }       
+  89   3                              tms=0;
+  90   3                      }
+  91   2                      keyscan();
+  92   2                      MatxDisp(DispRAM,duty);
+  93   2                      SMG_Display(scores,duty);
+  94   2              }
+  95   1              TR2_OFF;
+  96   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    726    ----
+   CONSTANT SIZE    =     25    ----
+   XDATA SIZE       =      1      14
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

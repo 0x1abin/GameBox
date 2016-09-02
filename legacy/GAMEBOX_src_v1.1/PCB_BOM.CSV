@@ -1,0 +1,18 @@
+"Bill of Material for GameBox_PCB.PrjPcb"
+"On 2014/10/27 at 13:57:28"
+
+"Comment","Pattern","Quantity","Components"
+
+"104","0805","1","C1",""
+"1K","0805","1","R2",""
+"330","0805","1","R3",""
+"BEEP","BEEP","1","BEEP1",""
+"BUTTON","BTN8.5*8.5","1","KP1",""
+"Cap2","RB.1/.2","1","C2","Capacitor"
+"IAP15F2K60S2_QFP44","LQFP44","1","U1",""
+"KEY_M","KEY_M","5","K_DOWN, K_LEFT, K_RIGHT, K_UP, OK",""
+"LED-8X8","LED8*8-3.0mm","2","DD1, DD2",""
+"RTX1","HDR1X4","1","P1","Header, 4-Pin"
+"S8550","SOT-23R","1","Q1","8550/BCW68"
+"SMG_3W_0.25","SMG_3W_0.25","1","SEG",""
+"USB","Micro_USB","1","USB_1",""
