@@ -27,20 +27,6 @@ v2.0:
 #include "gamebox.h"
 
 
-enum
-{	
-	STA_STARTUP = 0,
-	STA_WELCOME_SCREEN,
-	STA_SELECTION_MENU,
-	STA_INITIALIZE_GAME,
-	STA_PLAY_GAME,
-	STA_GAMEOVER
-}MAIN_STATE
-
-
-uint8 whichGame = 0;
-uint8 mainstate = STA_STARTUP;
-
 
 /**
   * @brief  Hal_Init.
@@ -66,6 +52,11 @@ void API_Init()
 	keypad_init();
 }
 
+void Game_Init()
+{
+	Game_Register(TANK, &game_tank);
+}
+
 /**
   * @brief  main func.
   * @param  None.
@@ -74,57 +65,11 @@ void API_Init()
 void main()
 {
 	Hal_Init();
-	
 	API_Init();
+//	Test_mode();
+	GameBox_Init();
 	
-	Test_mode();
-	
-	while(1)
-	{
-		switch (mainstate)
-		{
-			case STA_STARTUP:
-			
-				mainstate = STA_WELCOME_SCREEN;
-				break;
-				
-			case STA_WELCOME_SCREEN:
-				
-				mainstate = STA_SELECTION_MENU;
-				break;		
-			
-			case STA_SELECTION_MENU:
-				Game_Preview(whichGame);
-				
-				if(whichGame != 0xff)
-				{
-					mainstate = STA_INITIALIZE_GAME;
-				}
-				break;
-			
-			case STA_INITIALIZE_GAME:
-				Game_Init(whichGame);
-				
-				mainstate = STA_PLAY_GAME;
-				break;
-				
-			case STA_PLAY_GAME:
-				Game_Play(whichGame);
-				
-				if(gamelist[whichGame].state == GAMEOVER)
-				{
-					mainstate = STA_GAMEOVER;
-				}
-				break;
-			
-			case STA_GAMEOVER:
-				Game_End(whichGame);
-				
-				mainstate = STA_SELECTION_MENU;
-				break;
-		}//end main switch
-		
-	}
+	GameBox_Run();
 }
 
 

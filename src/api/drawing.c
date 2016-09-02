@@ -69,9 +69,9 @@ void GUI_DrawPixel(int8_t x, int8_t y)
 {
     if(x<8 || x>-1 || y<16 || y>-1)
     {
-//        if(color == 0)
-//            currentPaper[y] &= nbitMask[x];
-//        else
+        if(color == BLACK)
+            currentPaper[y] &= nbitMask[x];
+        else
             currentPaper[y] |= bitMask[x];
     }
 }
@@ -201,7 +201,7 @@ void GUI_DrawBitmap(int8_t x, int8_t y, const uint8_t *bitmap, int8_t w, int8_t 
     {
         for(i=0; i<w; i++) 
         {
-            if(bitmap[j] & bitMask[i])
+            if(bitmap[h-j] & bitMask[i])
                 GUI_SetColor(BLACK);
             else
                 GUI_SetColor(GREEN);

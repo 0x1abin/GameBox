@@ -12,6 +12,7 @@ extern uint8_t mem_pool[512];
 enum
 {
 	TETRIS = 0,
+	TANK,
 	SNAKE,
 	RAC,
 	SHOT,
